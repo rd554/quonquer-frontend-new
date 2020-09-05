@@ -1,0 +1,25 @@
+// To do List
+
+// signout function in action - place that to footer
+
+
+// Errors
+
+// remove Category function not included
+// showError component not working for Category 
+// Tag is firing for both success and error
+// showSuccess and showError not working for createBlog
+// head section on Blogs page is not displaying meta tags on page source
+// social media work on [slug.js]
+// photo not uploading
+// checkedTag and checked for categories not working on BlogUpdate
+// head section of categories slug edit / query.slug is giving error
+// Learn using handleResponse(response) for 401 error in blogs actions
+
+
+// profile not updating
+// profile page elongated
+
+//forgot password - message not updating
+// user null in controllers/resetpassword
+// login with google is not generating token
