@@ -166,7 +166,7 @@ const LoginComponent = () => {
       {showLoading()}
       {showMessage()}
       {showForm && signinForm()}
-      <LoginGoogle />
+      {/** // <LoginGoogle />*/}
     </React.Fragment>
   );
 };

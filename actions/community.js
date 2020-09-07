@@ -3,15 +3,18 @@ import { API } from "../config";
 
 export const createQuestion = async (question, token) => {
   try {
-    console.log(question);
-    const response = await fetch(`${API}/api/community/question`, {
+    console.log("question", question);
+
+    console.log("token", token);
+
+    const response = await fetch(`${API}/api/community/postQuestion`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(question),
+      body: JSON.stringify({ question }),
     });
     let data = await response.json();
 
@@ -23,17 +26,17 @@ export const createQuestion = async (question, token) => {
   }
 };
 
-export const createAnswer = async (answer, token) => {
+export const createAnswer = async (answer, token, questionId) => {
   try {
     console.log(answer);
-    const response = await fetch(`${API}/api/community/answer`, {
+    const response = await fetch(`${API}/api/community/postAnswer`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(answer),
+      body: JSON.stringify({ answer, questionId }),
     });
     let data = await response.json();
 

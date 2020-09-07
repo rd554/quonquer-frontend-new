@@ -9,15 +9,9 @@ import share from "../../public/images/001-share.png";
 import hide from "../../public/images/001-close.png";
 import user from "../../public/images/001-user.png";
 
-const Card = ({ community }) => {
-  const [values, setValues] = useState({
-    question: "",
-    answer: "",
-    user: "",
-  });
-
+const Card = () => {
   return (
-    <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community">
+    <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
       <div className="">
         <div className="h-10 w-full flex justify-end px-8 items-center">
           <img src={hide} alt="sadas" className="h-3 w-3 mt-1" />
@@ -42,10 +36,14 @@ const Card = ({ community }) => {
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">
-          <div className="h-10 w-full flex justify-center px-8 items-center">
-            <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
-            <p className="text-xs text-white ml-2">Answer</p>
-          </div>
+          <Link href="/community/answer">
+            <a>
+              <div className="h-10 w-full flex justify-center px-8 items-center">
+                <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
+                <p className="text-xs text-white ml-2">Answer</p>
+              </div>
+            </a>
+          </Link>
         </div>
         <div className="w-1/3 text-black flex-1 text-center ">
           <div className="h-10 w-full flex justify-center px-8 items-center">
@@ -56,7 +54,7 @@ const Card = ({ community }) => {
       </div>
       {[1, 1].map((item, index) => {
         return (
-          <div className=" flex p-4">
+          <div className="flex p-4">
             <div>
               <img src={user} alt="user" className="w-12" />
             </div>
@@ -70,25 +68,6 @@ const Card = ({ community }) => {
           </div>
         );
       })}
-
-      <div className=" flex p-4">
-        <div>
-          <img src={user} alt="user" className="w-6" />
-        </div>
-        <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1 flex-1 flex  items-center">
-          <input
-            className="bg-gray-100 focus:outline-none focus:shadow-outline py-3 px-4 
-      block appearance-none leading-normal rounded text-lg overlay-box reveal w-full my-0"
-            type="text"
-            placeholder="Add your answer..."
-          />
-          <div className="text-black flex-1 text-center dark-blue rounded-full h-8">
-            <div className="h-full w-full flex justify-center items-center px-4">
-              <p className="text-xs text-white">Post</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 
