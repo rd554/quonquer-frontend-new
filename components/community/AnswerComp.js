@@ -88,10 +88,10 @@ text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline 
                   className="bg-white focus:outline-none focus:shadow-outline mt-3 py-3 px-4 
 block appearance-none leading-normal rounded text-lg overlay-box reveal w-full"
                   type="text"
-                  onChange={handleChange("question")}
+                  onChange={handleChange("answer")}
                   value={answer}
                   required
-                  placeholder="What is your question?"
+                  placeholder="Add your answer..."
                 ></textarea>
               </div>
               <div className="mt-4 mx-3 shadow-md">

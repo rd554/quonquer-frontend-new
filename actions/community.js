@@ -72,7 +72,7 @@ export const listAllCards = async (skip, limit) => {
   }
 };
 
-export const list = async () => {
+export const getAllQuestionList = async () => {
   try {
     const response = await fetch(`${API}/api/community`, {
       method: "GET",

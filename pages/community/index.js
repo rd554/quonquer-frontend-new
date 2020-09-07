@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { listAllCards } from "../../actions/community";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../../components/community/Card";
 import CreateQuestion from "../../components/community/CreateQuestion";
 import Layout from "../../components/Layout";
@@ -9,6 +9,7 @@ import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import { withRouter } from "next/router";
+import { getAllQuestionList } from "../../actions/community";
 
 const Community = ({
   questions,
@@ -50,10 +51,10 @@ const Community = ({
   };
 
   const showLoadedQuestions = () => {
-    return questions.map((questions, i) => {
+    return questions.map((question, i) => {
       return (
         <div key={i}>
-          <Card key={i} questions={questions} />
+          <Card key={i} ques={question} />
         </div>
       );
     });
@@ -70,7 +71,7 @@ const Community = ({
   };
 
   return (
-    <>
+    <React.Fragment>
       <Layout>
         <main>
           <div>
@@ -81,7 +82,7 @@ const Community = ({
           </div>
         </main>
       </Layout>
-    </>
+    </React.Fragment>
   );
 };
 

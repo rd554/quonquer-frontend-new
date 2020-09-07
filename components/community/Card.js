@@ -9,7 +9,14 @@ import share from "../../public/images/001-share.png";
 import hide from "../../public/images/001-close.png";
 import user from "../../public/images/001-user.png";
 
-const Card = () => {
+const Card = ({ ques }) => {
+  const {
+    question,
+    postedBy: { name },
+    _id,
+    answers,
+  } = ques;
+
   return (
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
       <div className="">
@@ -19,13 +26,13 @@ const Card = () => {
       </div>
       <div className="flex justtify-start items-center px-4">
         <img src={user} alt="user" className="h-6 w-6" />
-        <p className="ml-1">User</p>
+        <p className="ml-1">{name}</p>
         <div className="">
           <p>&nbsp;. August 29</p>
         </div>
       </div>
       <div className="py-6 text-blue-900">
-        <div className="text-xl mb-2 px-4">{"asdasdsa"}</div>
+        <div className="text-xl mb-2 px-4">{question}</div>
         <div className="bg-gray-200 app-line-height w-full"></div>
       </div>
       <div className="flex max-w-5xl w-full self-center home-menu-login-text mb-6 justify-center">
@@ -36,7 +43,7 @@ const Card = () => {
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">
-          <Link href="/community/answer">
+          <Link href={`/community/${_id}`}>
             <a>
               <div className="h-10 w-full flex justify-center px-8 items-center">
                 <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
@@ -52,22 +59,25 @@ const Card = () => {
           </div>
         </div>
       </div>
-      {[1, 1].map((item, index) => {
-        return (
-          <div className="flex p-4">
-            <div>
-              <img src={user} alt="user" className="w-12" />
-            </div>
-            <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
-              <p className="font-bold text-">User</p>
-              <p>
-                In publishing and graphic design, Lorem ipsum is a placeholder
-                text commonly used to
-              </p>
-            </div>
-          </div>
-        );
-      })}
+      {answers.length > 0
+        ? answers.map((ans, index) => {
+            const {
+              userId: { name },
+              answer,
+            } = ans;
+            return (
+              <div className="flex p-4">
+                <div>
+                  <img src={user} alt="user" className="w-12" />
+                </div>
+                <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
+                  <p className="font-bold text-">{name}</p>
+                  <p>{answer}</p>
+                </div>
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 
