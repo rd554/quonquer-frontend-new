@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Private from "../auth/Private";
-import { useState, useEffect } from "react";
-import { withRouter } from "next/router";
+import { useState } from "react";
 import { createQuestion } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
 import back from "../../public/back.png";

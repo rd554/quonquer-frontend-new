@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { createQuestion, createAnswer } from "../../actions/community";
 import { useState } from "react";
 import { getCookie } from "../../actions/auth";
+import { Dropdown } from "./Dropdown";
 import moment from "moment";
 import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import hide from "../../public/images/001-close.png";
+import more from "../../public/images/001-more.png";
 import user from "../../public/images/001-user.png";
 
 const Card = ({ ques }) => {
@@ -19,16 +20,16 @@ const Card = ({ ques }) => {
 
   return (
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
-      <div className="">
-        <div className="h-10 w-full flex justify-end px-8 items-center">
-          <img src={hide} alt="sadas" className="h-3 w-3 mt-1" />
+      <div className="h-10 w-full flex justify-end px-4 items-center">
+        <div className="">
+          <Dropdown />
         </div>
       </div>
       <div className="flex justtify-start items-center px-4">
         <img src={user} alt="user" className="h-6 w-6" />
         <p className="ml-1">{name}</p>
-        <div className="">
-          <p>&nbsp;. August 29</p>
+        <div className="text-xs">
+          <p>&nbsp;. {moment(ques.updatedAt).fromNow()}</p>
         </div>
       </div>
       <div className="py-6 text-blue-900">

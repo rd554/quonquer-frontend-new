@@ -1,38 +1,39 @@
 import Link from "next/link";
-import Private from "../auth/Private";
 import { useState, useEffect } from "react";
-import { createAnswer, listAllCards } from "../../actions/community";
+import Private from "../auth/Private";
+import Router, { withRouter } from "next/router";
 import { getCookie } from "../../actions/auth";
-import back from "../../public/back.png";
-import user from "../../public/images/001-user.png";
+import { createQuestion, updateQuestion } from "../../actions/community";
+import { API } from "../../config";
+import QuestionComp from "./QuestionComp";
 
-const AnswerComp = ({ questionId }) => {
+const UpdateQuestion = ({ router }) => {
+  const [body, setBody] = useState("");
+
   const [values, setValues] = useState({
-    answer: "",
-    error: false,
-    success: false,
-    posted: false,
-    postButton: "Post answer",
+    question: "",
+    error: "",
+    success: "",
   });
 
-  const { answer, error, success, postButton } = values;
+  const { question, error, success } = values;
   const token = getCookie("token");
 
-  const clickSubmit = (e) => {
-    e.preventDefault();
-    setValues({ ...values, postButton: "posting..." });
-    createAnswer(answer, token, questionId).then((res) => {
-      if (res.error) {
-        setValues({ ...values, error: res.error });
-      } else {
-        setValues({
-          ...values,
-          posted: true,
-          postButton: "posted",
-          success: res.success,
-        });
-      }
-    });
+  useEffect(() => {
+    setValues({ ...values, question: new QuestionComp() });
+    initQuestion();
+  }, [router]);
+
+  const initQuestion = () => {
+    if (questionId)
+      createQuestion(question, questionId).then((res) => {
+        if (res.error) {
+          console.log(res.error);
+        } else {
+          setValues({ ...values, question: res.question });
+          setBody(res.body);
+        }
+      });
   };
 
   const handleChange = (name) => (e) => {
@@ -41,15 +42,29 @@ const AnswerComp = ({ questionId }) => {
       [name]: e.target.value,
       error: false,
       success: false,
-      postButton: "Post question",
     });
   };
 
-  const postAnswer = () => {
+  const editQuestion = () => {
+    e.preventDefault();
+    updateQuestion(question, token, questionId).then((res) => {
+      if (res.error) {
+        setValues({ ...values, error: res.error });
+      } else {
+        setValues({
+          ...values,
+          question: "",
+          success: `Question titled '${res.question}' is successfully updated`,
+        });
+      }
+    });
+  };
+
+  const updateQuestionForm = () => {
     return (
       <>
         <Private>
-          <form onSubmit={clickSubmit}>
+          <form onSubmit={editQuestion}>
             <div className="flex w-full justify-between mt-4">
               <Link href="/community">
                 <a>
@@ -60,10 +75,10 @@ const AnswerComp = ({ questionId }) => {
                 <button
                   type="submit"
                   className="inline-block dark-blue
-text-white px-5 py-2 mr-2 uppercase tracking-wider
-text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-full shadow-md"
+  text-white px-5 py-2 mr-2 uppercase tracking-wider
+  text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-full shadow-md"
                 >
-                  Post
+                  Update
                 </button>
               </div>
             </div>
@@ -80,18 +95,18 @@ text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline 
                 <textarea
                   rows="8"
                   className="bg-white focus:outline-none focus:shadow-outline mt-3 py-3 px-4 
-block appearance-none leading-normal rounded text-lg overlay-box reveal w-full"
+  block appearance-none leading-normal rounded text-lg overlay-box reveal w-full"
                   type="text"
-                  onChange={handleChange("answer")}
-                  value={answer}
+                  onChange={handleChange("question")}
+                  value={question}
                   required
-                  placeholder="Add your answer..."
+                  placeholder="What is your question?"
                 ></textarea>
               </div>
               <div className="mt-4 mx-3 shadow-md">
                 <select
                   className="bg-white focus:outline-none focus:shadow-outline py-3 px-4 
-block appearance-none leading-normal rounded text-lg overlay-box reveal"
+  block appearance-none leading-normal rounded text-lg overlay-box reveal"
                 >
                   <option value="A">Public</option>
                   <option value="B">Anonymous</option>
@@ -107,7 +122,7 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal"
     );
   };
 
-  return <>{postAnswer()}</>;
+  return <>{updateQuestionForm()}</>;
 };
 
-export default AnswerComp;
+export default withRouter(UpdateQuestion);

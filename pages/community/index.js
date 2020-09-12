@@ -54,7 +54,7 @@ const Community = ({
     return questions.map((question, i) => {
       return (
         <div key={i}>
-          <Card key={i} ques={question} />
+          <Card ques={question} />
         </div>
       );
     });
@@ -64,7 +64,7 @@ const Community = ({
     return loadedQuestions.map((questions, i) => {
       return (
         <div key={i}>
-          <Card key={i} questions={questions} />
+          <Card questions={questions} />
         </div>
       );
     });
