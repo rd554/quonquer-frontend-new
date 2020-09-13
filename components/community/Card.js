@@ -22,7 +22,7 @@ const Card = ({ ques }) => {
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
       <div className="h-10 w-full flex justify-end px-4 items-center">
         <div className="">
-          <Dropdown />
+          <Dropdown questionId={_id} />
         </div>
       </div>
       <div className="flex justtify-start items-center px-4">
@@ -44,7 +44,7 @@ const Card = ({ ques }) => {
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">
-          <Link href={`/community/${_id}`}>
+          <Link href={`/community/answer/${_id}`}>
             <a>
               <div className="h-10 w-full flex justify-center px-8 items-center">
                 <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
@@ -54,10 +54,14 @@ const Card = ({ ques }) => {
           </Link>
         </div>
         <div className="w-1/3 text-black flex-1 text-center ">
-          <div className="h-10 w-full flex justify-center px-8 items-center">
-            <img src={share} alt="sadas" className="h-5 w-5 mt-1" />
-            <p className="dark-blue-text text-xs ml-2 mt-1">Share</p>
-          </div>
+          <Link href={`/community/question/${_id}`}>
+            <a>
+              <div className="h-10 w-full flex justify-center px-8 items-center">
+                <img src={share} alt="sadas" className="h-5 w-5 mt-1" />
+                <p className="dark-blue-text text-xs ml-2 mt-1">Share</p>
+              </div>
+            </a>
+          </Link>
         </div>
       </div>
       {answers.length > 0

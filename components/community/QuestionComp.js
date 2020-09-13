@@ -6,9 +6,9 @@ import { getCookie } from "../../actions/auth";
 import back from "../../public/back.png";
 import user from "../../public/images/001-user.png";
 
-const QuestionComp = () => {
+const QuestionComp = ({ questionObj, isForUpdate }) => {
   const [values, setValues] = useState({
-    question: "",
+    question: isForUpdate ? questionObj.question : "",
     error: false,
     success: false,
     posted: false,
@@ -51,8 +51,25 @@ const QuestionComp = () => {
   };
 
   const postQuestion = () => {
+    //     return (
+    //       <React.Fragment>
+    //         <div className="bg-green-500 w-full h-24">
+    //           <form>
+    //             <textarea
+    //               rows="8"
+    //               className="focus:outline-none focus:shadow-outline mt-3 py-3 px-4
+    // block appearance-none leading-normal rounded text-lg overlay-box reveal w-full bg-gray-500"
+    //               type="text"
+    //               required
+    //               placeholder="What is your question?"
+    //             ></textarea>
+    //           </form>
+    //         </div>
+    //       </React.Fragment>
+    // {isForUpdate ? "Update" : "Post"}
+    //     );
     return (
-      <>
+      <React.Fragment>
         <Private>
           <form onSubmit={clickSubmit}>
             <div className="flex w-full justify-between mt-4">
@@ -68,7 +85,7 @@ const QuestionComp = () => {
 text-white px-5 py-2 mr-2 uppercase tracking-wider
 text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-full shadow-md"
                 >
-                  Post
+                  {isForUpdate ? "Update" : "Post"}
                 </button>
               </div>
             </div>
@@ -108,11 +125,11 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal"
             </div>
           </form>
         </Private>
-      </>
+      </React.Fragment>
     );
   };
 
-  return <>{postQuestion()}</>;
+  return <React.Fragment>{postQuestion()}</React.Fragment>;
 };
 
 export default QuestionComp;

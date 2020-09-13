@@ -9,7 +9,6 @@ import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import { withRouter } from "next/router";
-import { getAllQuestionList } from "../../actions/community";
 
 const Community = ({
   questions,

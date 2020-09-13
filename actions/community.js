@@ -171,3 +171,21 @@ export const removeAnswer = async (answer, token, questionId) => {
     return err;
   }
 };
+
+export const getSingleQuestion = async (questionId) => {
+  try {
+    const response = await fetch(
+      `${API}/api/community/getSingleQuestion/${questionId}`,
+      {
+        method: "GET",
+      }
+    );
+    let data = await response.json();
+
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
