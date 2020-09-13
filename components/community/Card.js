@@ -10,7 +10,7 @@ import hide from "../../public/images/001-close.png";
 import more from "../../public/images/001-more.png";
 import user from "../../public/images/001-user.png";
 
-const Card = ({ ques }) => {
+const Card = ({ ques, notifyParentQuestionList }) => {
   const {
     question,
     postedBy: { name },
@@ -22,7 +22,10 @@ const Card = ({ ques }) => {
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
       <div className="h-10 w-full flex justify-end px-4 items-center">
         <div className="">
-          <Dropdown questionId={_id} />
+          <Dropdown
+            questionId={_id}
+            notifyParentQuestionList={notifyParentQuestionList}
+          />
         </div>
       </div>
       <div className="flex justtify-start items-center px-4">

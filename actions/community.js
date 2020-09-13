@@ -132,7 +132,7 @@ export const updateAswer = async (answer, token, questionId) => {
 
 export const removeQuestion = async (question, token) => {
   try {
-    console.log(question);
+    console.log("removeQuestion", question);
     const response = await fetch(`${API}/api/community/deleteQuestion`, {
       method: "DELETE",
       headers: {
@@ -140,6 +140,7 @@ export const removeQuestion = async (question, token) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({ questionId: question }),
     });
     let data = await response.json();
 

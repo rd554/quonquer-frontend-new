@@ -21,6 +21,7 @@ const Community = ({
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(totalQuestions);
   const [loadedQuestions, setLoadedQuestions] = useState([]);
+  const [displayQuestions, setDisplayQuestions] = useState(questions);
 
   const loadMore = () => {
     let toSkip = skip + limit;
@@ -50,23 +51,37 @@ const Community = ({
   };
 
   const showLoadedQuestions = () => {
-    return questions.map((question, i) => {
+    return displayQuestions.map((question, i) => {
       return (
         <div key={i}>
-          <Card ques={question} />
+          <Card
+            ques={question}
+            notifyParentQuestionList={notifyParentQuestionList}
+          />
         </div>
       );
     });
   };
 
   const showAllQuestions = () => {
-    return loadedQuestions.map((questions, i) => {
+    return loadedQuestions.map((question, i) => {
       return (
         <div key={i}>
-          <Card questions={questions} />
+          <Card
+            questions={question}
+            notifyParentQuestionList={notifyParentQuestionList}
+          />
         </div>
       );
     });
+  };
+
+  const notifyParentQuestionList = (questionId) => {
+    console.log("notifyParentQuestionList");
+    let newQuestions = displayQuestions.filter(
+      (question) => question._id !== questionId
+    );
+    setDisplayQuestions(newQuestions);
   };
 
   return (

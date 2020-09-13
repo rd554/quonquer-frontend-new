@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Private from "../auth/Private";
-import { getAllQuestionList, removeQuestion } from "../../actions/community";
+import { removeQuestion } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
 import Link from "next/link";
 import { Transition } from "@tailwindui/react";
 
-export function Dropdown({ questionId }) {
+export function Dropdown({ questionId, notifyParentQuestionList }) {
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
   const [message, setMessage] = useState("");
@@ -39,27 +39,13 @@ export function Dropdown({ questionId }) {
     return () => document.removeEventListener("keyup", handleEscape);
   }, [isOpen]);
 
-  useEffect(() => {
-    loadQuestions();
-  }, []);
-
-  const loadQuestions = () => {
-    getAllQuestionList().then((res) => {
-      if (res.error) {
-        console.log(res.error);
-      } else {
-        setQuestion(res);
-      }
-    });
-  };
-
   const deleteQuestion = (questionId) => {
     removeQuestion(questionId, token).then((res) => {
       if (res.error) {
         console.log(res.error);
       } else {
         setMessage(res.message);
-        loadQuestions();
+        notifyParentQuestionList(questionId);
       }
     });
   };
@@ -123,7 +109,7 @@ export function Dropdown({ questionId }) {
               {showUpdateButton(questionId)}
 
               <div
-                onClick={() => deleteConfirm(question._id)}
+                onClick={() => deleteConfirm(questionId)}
                 rel="noopener noreferrer"
                 className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                 role="menuitem"
