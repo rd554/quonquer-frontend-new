@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import Private from "../auth/Private";
-import { removeQuestion } from "../../actions/community";
+import { removeAnswer } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
 import Link from "next/link";
 import { Transition } from "@tailwindui/react";
+import { useRouter } from "next/router";
 
-export function Dropdown({ questionId, notifyParentQuestionList }) {
+export function DropdownAnswer({
+  answerId,
+  questionId,
+  createUpdateAnswerProps,
+}) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [question, setQuestion] = useState([]);
+  const [answer, setAnswer] = useState([]);
   const [message, setMessage] = useState("");
   const container = useRef(null);
   const token = getCookie("token");
@@ -39,28 +45,27 @@ export function Dropdown({ questionId, notifyParentQuestionList }) {
     return () => document.removeEventListener("keyup", handleEscape);
   }, [isOpen]);
 
-  const deleteQuestion = (questionId) => {
-    removeQuestion(questionId, token).then((res) => {
+  const deleteAnswer = (answerId) => {
+    removeAnswer(answerId, token, questionId).then((res) => {
       if (res.error) {
         console.log(res.error);
       } else {
         setMessage(res.message);
-        notifyParentQuestionList(questionId);
       }
     });
   };
 
-  const deleteConfirm = (questionId) => {
+  const deleteConfirm = (answerId) => {
     let answer = window.confirm("Are you sure you want to delete");
     if (answer) {
-      deleteQuestion(questionId);
+      deleteAnswer(answerId);
     }
     return setIsOpen(false);
   };
 
-  const showUpdateButton = (questionId) => {
+  const showUpdateButton = (answerId) => {
     return (
-      <Link href={`/community/question/${questionId}`}>
+      <Link href={`/community/answer/${createUpdateAnswerProps}`}>
         <a
           rel="noopener noreferrer"
           className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
@@ -72,6 +77,14 @@ export function Dropdown({ questionId, notifyParentQuestionList }) {
     );
   };
 
+  const onOptionsMenuClick = () => {
+    if (token && token.length) {
+      setIsOpen((v) => !v);
+    } else {
+      router.push("/signin");
+    }
+  };
+
   return (
     <div ref={container} className="relative inline-block text-left">
       <div>
@@ -81,11 +94,13 @@ export function Dropdown({ questionId, notifyParentQuestionList }) {
           id="options-menu"
           aria-haspopup="true"
           aria-expanded={isOpen}
-          onClick={() => setIsOpen((v) => !v)}
+          onClick={() => onOptionsMenuClick()}
         >
-          <svg className="w-4 h-5" viewBox="0 0 20 20" fill="100d52">
-            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-          </svg>
+          {
+            <svg className="w-4 h-5" viewBox="0 0 20 20" fill="100d52">
+              <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+            </svg>
+          }
         </button>
       </div>
 
@@ -106,10 +121,10 @@ export function Dropdown({ questionId, notifyParentQuestionList }) {
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {showUpdateButton(questionId)}
+            {showUpdateButton(answerId)}
 
             <div
-              onClick={() => deleteConfirm(questionId)}
+              onClick={() => deleteConfirm(answerId)}
               rel="noopener noreferrer"
               className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
               role="menuitem"

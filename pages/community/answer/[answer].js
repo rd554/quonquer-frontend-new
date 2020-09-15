@@ -1,26 +1,44 @@
 import Head from "next/head";
 import Link from "next/link";
 import { withRouter } from "next/router";
-
 import AnswerComp from "../../../components/community/AnswerComp";
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../../config";
+import { getSingleAnswer } from "../../../actions/community";
 
-const Answer = (props) => {
-  console.log("props:", props);
+const Answer = ({ answerObj, isForAnswerUpdate, answerId, questionId }) => {
+  console.log("answerObj", answerObj);
   return (
     <React.Fragment>
-      <AnswerComp questionId={props.router.query.answer} />
+      <AnswerComp
+        isForAnswerUpdate={isForAnswerUpdate}
+        answerObj={answerObj}
+        answerId={answerId}
+        questionId={questionId}
+      />
     </React.Fragment>
   );
 };
 
 Answer.getInitialProps = async ({ query }) => {
-  // const res = await createAnswer(query.questionId);
-  // if (res.error) {
-  //   console.log(res.error);
-  // } else {
-  return { questionId: query.questionId };
-  // }
+  console.log("query.answer", query.answer.split("||"));
+  let dataArray = query.answer.split("||");
+  let answerId = dataArray[1];
+  let questionId = dataArray[0];
+  if (query.answer && dataArray && answerId.length) {
+    // Update drop down
+
+    const res = await getSingleAnswer(answerId);
+    if (res.error) {
+      console.log(res.error);
+      return { isForAnswerUpdate: false, answerId, questionId };
+    }
+    return { answerObj: res, isForAnswerUpdate: true, answerId, questionId };
+  } else {
+    return {
+      isForAnswerUpdate: false,
+      answerId,
+      questionId,
+    };
+  }
 };
 
 export default withRouter(Answer);

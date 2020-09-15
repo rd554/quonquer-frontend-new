@@ -23,3 +23,7 @@
 //forgot password - message not updating
 // user null in controllers/resetpassword
 // login with google is not generating token
+
+git add .
+git commit -m 'mesasge of milestone'
+git push origin master

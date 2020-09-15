@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { listAllCards } from "../../actions/community";
 import { useState, useEffect } from "react";
-import Card from "../../components/community/Card";
+import QuestionCard from "../../components/community/QuestionCard";
 import CreateQuestion from "../../components/community/CreateQuestion";
 import Layout from "../../components/Layout";
 import clap from "../../public/images/clap.png";
@@ -30,6 +30,8 @@ const Community = ({
         console.log(error);
       } else {
         setLoadedQuestions([...loadedQuestions, ...res.questions]);
+        setSize(res.size);
+        setSkip(toSkip);
       }
     });
   };
@@ -51,29 +53,35 @@ const Community = ({
   };
 
   const showLoadedQuestions = () => {
-    return displayQuestions.map((question, i) => {
-      return (
-        <div key={i}>
-          <Card
-            ques={question}
-            notifyParentQuestionList={notifyParentQuestionList}
-          />
-        </div>
-      );
-    });
+    return displayQuestions && displayQuestions.length
+      ? displayQuestions.map((question, i) => {
+          return (
+            <div key={i}>
+              <QuestionCard
+                key={i}
+                ques={question}
+                notifyParentQuestionList={notifyParentQuestionList}
+              />
+            </div>
+          );
+        })
+      : null;
   };
 
   const showAllQuestions = () => {
-    return loadedQuestions.map((question, i) => {
-      return (
-        <div key={i}>
-          <Card
-            questions={question}
-            notifyParentQuestionList={notifyParentQuestionList}
-          />
-        </div>
-      );
-    });
+    return loadedQuestions && loadedQuestions.length
+      ? loadedQuestions.map((question, i) => {
+          return (
+            <div key={i}>
+              <QuestionCard
+                key={i}
+                questions={question}
+                notifyParentQuestionList={notifyParentQuestionList}
+              />
+            </div>
+          );
+        })
+      : null;
   };
 
   const notifyParentQuestionList = (questionId) => {

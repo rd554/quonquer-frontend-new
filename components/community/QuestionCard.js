@@ -2,21 +2,24 @@ import Link from "next/link";
 import { useState } from "react";
 import { getCookie } from "../../actions/auth";
 import { Dropdown } from "./Dropdown";
+import { DropdownAnswer } from "./DropdownAnswer";
 import moment from "moment";
 import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import hide from "../../public/images/001-close.png";
-import more from "../../public/images/001-more.png";
+import more from "../../public/svg/more.svg";
 import user from "../../public/images/001-user.png";
 
-const Card = ({ ques, notifyParentQuestionList }) => {
+const QuestionCard = ({ ques, notifyParentQuestionList }) => {
   const {
     question,
     postedBy: { name },
     _id,
     answers,
   } = ques;
+
+  const createUpdateAnswerProps = `${_id}||`;
 
   return (
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
@@ -28,11 +31,11 @@ const Card = ({ ques, notifyParentQuestionList }) => {
           />
         </div>
       </div>
-      <div className="flex justtify-start items-center px-4">
+      <div className="flex justify-start items-center px-4">
         <img src={user} alt="user" className="h-6 w-6" />
-        <p className="ml-1">{name}</p>
+        <p className="ml-1 font-medium">{name}</p>
         <div className="text-xs">
-          <p>&nbsp;. {moment(ques.updatedAt).fromNow()}</p>
+          <p>&nbsp;. asked &nbsp;{moment(ques.createdAt).fromNow()}</p>
         </div>
       </div>
       <div className="py-6 text-blue-900">
@@ -47,7 +50,7 @@ const Card = ({ ques, notifyParentQuestionList }) => {
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">
-          <Link href={`/community/answer/${_id}`}>
+          <Link href={`/community/answer/${createUpdateAnswerProps}`}>
             <a>
               <div className="h-10 w-full flex justify-center px-8 items-center">
                 <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
@@ -67,21 +70,31 @@ const Card = ({ ques, notifyParentQuestionList }) => {
           </Link>
         </div>
       </div>
+      <hr />
       {answers.length > 0
         ? answers.map((ans, index) => {
             const {
               userId: { name },
               answer,
             } = ans;
+
+            const createUpdateAnswerProps = `${_id}||${ans._id}`;
             return (
-              <div className="flex p-4">
-                <div>
-                  <img src={user} alt="user" className="w-12" />
+              <div key={index} className="flex justify-between p-4">
+                <div className="flex">
+                  <div>
+                    <img src={user} alt="user" className="w-6 h-6 mt-1" />
+                  </div>
+                  <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
+                    <p className="font-medium">{name}</p>
+                    <p className="text-sm">{answer}</p>
+                  </div>
                 </div>
-                <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
-                  <p className="font-bold text-">{name}</p>
-                  <p>{answer}</p>
-                </div>
+                <DropdownAnswer
+                  answerId={ans._id}
+                  questionId={_id}
+                  createUpdateAnswerProps={createUpdateAnswerProps}
+                />
               </div>
             );
           })
@@ -98,4 +111,4 @@ const Card = ({ ques, notifyParentQuestionList }) => {
   // );
 };
 
-export default Card;
+export default QuestionCard;

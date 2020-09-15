@@ -3,7 +3,7 @@ import AnswerComp from "../../../components/community/AnswerComp";
 const Answer = () => {
   return (
     <React.Fragment>
-      <AnswerComp questionId={""} />
+      <AnswerComp isForAnswerUpdate={false} />
     </React.Fragment>
   );
 };

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import user from "../../public/images/001-user.png";
+// import { getCookie } from "../../actions/auth";
 
 const CreateQuestion = () => {
   return (
-    <>
+    <React.Fragment>
       <div className="mx-4 my-6 mt-16 rounded-lg shadow-lg">
         <div className="flex text-bold items-center px-3 w-full pr-4 pl-4 my-4">
           <img src={user} alt="user" className="h-6 w-6" />
-          <p className="ml-1">Ravi Dubey</p>
+          <p className="ml-1 font-medium">{"Ravi"}</p>
           <button
             className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
             onClick={() => closeModal(false)}
@@ -27,7 +28,7 @@ const CreateQuestion = () => {
           </Link>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

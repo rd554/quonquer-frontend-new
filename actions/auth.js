@@ -135,6 +135,7 @@ export const removeLocalStorage = (key) => {
 export const authenticate = (res, next) => {
   setCookie("token", res.token);
   setLocalStorage("user", res.user);
+  setCookie("user", res.user);
   next();
 };
 
