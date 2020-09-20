@@ -9,6 +9,7 @@ import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import { withRouter } from "next/router";
+import { getCookie } from "../../actions/auth";
 
 const Community = ({
   questions,
@@ -22,6 +23,18 @@ const Community = ({
   const [size, setSize] = useState(totalQuestions);
   const [loadedQuestions, setLoadedQuestions] = useState([]);
   const [displayQuestions, setDisplayQuestions] = useState(questions);
+  const [currentUserEmail, setCurrentUserEmail] = useState("");
+  const [currentUserName, setCurrentUserName] = useState("");
+  // const userEmail = localStorage.getItem("user")?.email || "";
+
+  useEffect(() => {
+    if (user && JSON.parse(user).email) {
+      setCurrentUserEmail(JSON.parse(user).email);
+      setCurrentUserName(JSON.parse(user).name);
+    }
+  }, [currentUserEmail, currentUserName]);
+
+  const user = getCookie("user");
 
   const loadMore = () => {
     let toSkip = skip + limit;
@@ -58,6 +71,7 @@ const Community = ({
           return (
             <div key={i}>
               <QuestionCard
+                userEmail={currentUserEmail}
                 key={i}
                 ques={question}
                 notifyParentQuestionList={notifyParentQuestionList}
@@ -74,6 +88,7 @@ const Community = ({
           return (
             <div key={i}>
               <QuestionCard
+                userEmail={currentUserEmail}
                 key={i}
                 questions={question}
                 notifyParentQuestionList={notifyParentQuestionList}
@@ -97,7 +112,7 @@ const Community = ({
       <Layout>
         <main>
           <div>
-            <CreateQuestion />
+            <CreateQuestion currentUserName={currentUserName} />
             <div>{showAllQuestions()}</div>
             <div>{showLoadedQuestions()}</div>
             <div className="text-center">{loadMoreButton()}</div>

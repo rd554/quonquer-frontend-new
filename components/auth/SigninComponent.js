@@ -5,8 +5,10 @@ import back from "../../public/back.png";
 import logo from "../../public/app_img.jpg";
 import Router from "next/router";
 import LoginGoogle from "./LoginGoogle";
+import { useRouter } from "next/router";
 
 const LoginComponent = () => {
+  const router = useRouter();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -85,12 +87,20 @@ const LoginComponent = () => {
       ""
     );
 
+  const handleBack = () => {
+    router.back();
+  };
+
   const signinForm = () => {
     return (
       <div>
-        <Link href="/">
-          <img src={back} alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
-        </Link>
+        <img
+          onClick={() => handleBack()}
+          src={back}
+          alt="back"
+          className="w-6 h-6 mr-3 mt-4 ml-1"
+        ></img>
+
         <div className="w-24 content-center mx-auto">
           <img
             src={logo}

@@ -6,6 +6,7 @@ import { createQuestion } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
 import back from "../../public/back.png";
 import user from "../../public/images/001-user.png";
+import { PUBLIC, ANONYMOUS } from "../../helpers/constants";
 
 const QuestionComp = ({ questionObj, isForUpdate }) => {
   const router = useRouter();
@@ -20,8 +21,8 @@ const QuestionComp = ({ questionObj, isForUpdate }) => {
   const { question, error, success, postButton } = values;
   const token = getCookie("token");
 
-  const [selectedScope, setSelectedScope] = useState("Public");
-  const [scopeOptions] = useState(["Public", "Anonymous"]);
+  const [selectedScope, setSelectedScope] = useState(PUBLIC);
+  const [scopeOptions] = useState([PUBLIC, ANONYMOUS]);
 
   // useEffect(() => {
   //   setValues({ ...values });
