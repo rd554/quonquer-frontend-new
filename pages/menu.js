@@ -106,7 +106,7 @@ const Menu = () => {
           <div className="flex justify-center home-menu-login-text mt-10">
             <Link href="/signin">
               <a className="text-black mr-4">
-                New user?{" "}
+                New user? &nbsp;
                 <span>
                   <Link href="/signup">
                     <a className="text-blue-500">Signup</a>
@@ -117,7 +117,6 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      )
     </>
   );
 };

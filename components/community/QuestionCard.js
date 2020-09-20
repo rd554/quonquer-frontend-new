@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getCookie } from "../../actions/auth";
 import { Dropdown } from "./Dropdown";
 import { DropdownAnswer } from "./DropdownAnswer";
+import { Claps } from "./Claps";
 import moment from "moment";
 import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
@@ -46,7 +47,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList }) => {
         <div className="w-1/3 text-black flex-1 text-center ">
           <div className="h-10 w-full flex justify-center px-8 items-center">
             <img src={clap} alt="sadas" className="h-5 w-5 mt-1" />
-            <p className="dark-blue-text text-xs ml-2">Clap</p>
+            <p className="dark-blue-text text-xs ml-2">clap</p>
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">

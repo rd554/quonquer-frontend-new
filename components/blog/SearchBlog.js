@@ -64,9 +64,9 @@ const SearchBlog = () => {
     );
   };
 
-  const blogsNotFound = () => {
-    return <h1>Blogs not found</h1>;
-  };
+  // const blogsNotFound = () => {
+  //   return <h1>Blogs not found</h1>;
+  // };
 
   const niceOne = () => {
     return (
@@ -106,7 +106,6 @@ block w-full appearance-none leading-normal rounded  text-lg"
     <>
       {niceOne()}
       {searched && searchedBlogs(results)}
-      {!searched && blogsNotFound()}
     </>
   );
 };

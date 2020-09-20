@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <div>
-      <section className="fixed bg-white h-12 w-full top-0 item-center flex shadow-md justify-between px-4">
+      <section className="fixed bg-white h-12 w-full top-0 item-center flex shadow-md justify-between px-4 z-20">
         <div className="sm:w-1/3 h-full flex content-center flex-wrap cursor-pointer">
           <Link href="/">
             <a>

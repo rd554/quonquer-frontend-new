@@ -20,6 +20,9 @@ const QuestionComp = ({ questionObj, isForUpdate }) => {
   const { question, error, success, postButton } = values;
   const token = getCookie("token");
 
+  const [selectedScope, setSelectedScope] = useState("Public");
+  const [scopeOptions] = useState(["Public", "Anonymous"]);
+
   // useEffect(() => {
   //   setValues({ ...values });
   // }, [router]);
@@ -27,7 +30,7 @@ const QuestionComp = ({ questionObj, isForUpdate }) => {
   const clickSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, postButton: "posting..." });
-    createQuestion(question, token).then((res) => {
+    createQuestion(question, token, selectedScope).then((res) => {
       if (res.error) {
         setValues({ ...values, error: res.error });
       } else {
@@ -115,11 +118,16 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal w-full"
             </div>
             <div className="mt-4 mx-3 shadow-md">
               <select
+                value={selectedScope}
+                onChange={(e) => setSelectedScope(e.currentTarget.value)}
                 className="bg-white focus:outline-none focus:shadow-outline py-3 px-4 
 block appearance-none leading-normal rounded text-lg overlay-box reveal"
               >
-                <option value="A">Public</option>
-                <option value="B">Anonymous</option>
+                {scopeOptions.map((scope) => (
+                  <option key={scope} value={scope}>
+                    {scope}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="text-gray-700 p-4 very-small">

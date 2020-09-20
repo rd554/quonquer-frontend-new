@@ -1,7 +1,7 @@
 import fetch from "isomorphic-fetch";
 import { API } from "../config";
 
-export const createQuestion = async (question, token) => {
+export const createQuestion = async (question, token, selectedScope) => {
   try {
     console.log("question", question);
 
@@ -14,7 +14,7 @@ export const createQuestion = async (question, token) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ question, selectedScope }),
     });
     let data = await response.json();
 
@@ -26,7 +26,12 @@ export const createQuestion = async (question, token) => {
   }
 };
 
-export const createAnswer = async (answer, token, questionId) => {
+export const createAnswer = async (
+  answer,
+  token,
+  questionId,
+  selectedScope
+) => {
   try {
     console.log(answer, questionId);
     const response = await fetch(`${API}/api/community/postAnswer`, {
@@ -36,7 +41,7 @@ export const createAnswer = async (answer, token, questionId) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ answer, questionId }),
+      body: JSON.stringify({ answer, questionId, selectedScope }),
     });
     let data = await response.json();
 

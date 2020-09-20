@@ -27,3 +27,23 @@
 git add .
 git commit -m 'mesasge of milestone'
 git push origin master
+
+
+
+// Things left
+
+// Public/Anonymous
+// user.name on community page
+// load more on community page
+// claps & share
+// profile page UI and image upload
+// Search Blog UI
+// Home page latest blogs UI
+// Home page Video
+// Google, facebook login
+
+
+// Blogs comment system with claps and social share
+
+
+// Footer pages (About, Vision)
