@@ -4,7 +4,7 @@ import { API } from "../../config";
 
 const smallCard = ({ blog }) => {
   return (
-    <div className="rounded shadow-md bg-gray-100 w-full min-w-full hor-list-nobar overflow-x-auto whitespace-no-wrap py-3 px-2">
+    <div className="">
       <div className="cursor-pointer rounded mt-4 ml-3 mr-3 shadow-lg bg-white align-top my-2">
         <section>
           <Link href={`/blogs/${blog.slug}`}>

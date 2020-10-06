@@ -4,6 +4,7 @@ import { getCookie } from "../../actions/auth";
 import { Dropdown } from "./Dropdown";
 import { DropdownAnswer } from "./DropdownAnswer";
 import { Claps } from "./Claps";
+
 import moment from "moment";
 import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";
@@ -33,6 +34,22 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
     );
   };
 
+  // const handleClick = async (question, url) => {
+  //   if (typeof navigator.share === "undefined" || !navigator.share) {
+  //     alert("Your browser does not support Android Native Share");
+  //   } else {
+  //     const QuestionConst = question;
+  //     const URLConst = url;
+
+  //     try {
+  //       await navigator.share({ question: QuestionConst, url: URLConst });
+  //     } catch (error) {
+  //       console.log("Error sharing: " + error);
+  //       return;
+  //     }
+  //   }
+  // };
+
   return (
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
       <div className="h-10 w-full flex justify-end px-4 items-center">
@@ -61,8 +78,10 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
       <div className="flex max-w-5xl w-full self-center home-menu-login-text mb-6 justify-center">
         <div className="w-1/3 text-black flex-1 text-center ">
           <div className="h-10 w-full flex justify-center px-8 items-center">
-            <img src={clap} alt="sadas" className="h-5 w-5 mt-1" />
-            <p className="dark-blue-text text-xs ml-2">clap</p>
+            <img src={clap} alt="thumps up" className="h-5 w-5 mt-1" />
+            <p className="dark-blue-text text-xs mr-20">
+              <Claps />
+            </p>
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center dark-blue rounded-full">
@@ -70,27 +89,29 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
             onClick={() => handleAnswerBtnClick(createUpdateAnswerProps)}
             className="h-10 w-full flex justify-center px-8 items-center"
           >
-            <img src={ans} alt="sadas" className="h-4 w-4 mt-1" />
+            <img src={ans} alt="answer" className="h-4 w-4 mt-1" />
             <p className="text-xs text-white ml-2">Answer</p>
           </div>
         </div>
         <div className="w-1/3 text-black flex-1 text-center ">
-          <Link href={`/community/question/${_id}`}>
-            <a>
-              <div className="h-10 w-full flex justify-center px-8 items-center">
-                <img src={share} alt="sadas" className="h-5 w-5 mt-1" />
-                <p className="dark-blue-text text-xs ml-2 mt-1">Share</p>
-              </div>
-            </a>
-          </Link>
+          <a>
+            <div
+              // onClick={handleClick()}
+              className="h-10 w-full flex justify-center px-8 items-center"
+            >
+              <img src={share} alt="share" className="h-5 w-5 mt-1" />
+              <p className="dark-blue-text text-xs ml-2 mt-1">Share</p>
+            </div>
+          </a>
         </div>
       </div>
       <hr />
       {answers.length > 0
         ? answers.map((ans, index) => {
             const {
-              userId: { name },
+              userId: { name, email },
               answer,
+              answerScope,
             } = ans;
 
             const createUpdateAnswerProps = `${_id}||${ans._id}`;
@@ -101,15 +122,19 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
                     <img src={user} alt="user" className="w-6 h-6 mt-1" />
                   </div>
                   <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
-                    <p className="font-medium">{name}</p>
+                    <p className="font-medium">
+                      {answerScope === PUBLIC ? name : ANONYMOUS}
+                    </p>
                     <p className="text-sm">{answer}</p>
                   </div>
                 </div>
-                <DropdownAnswer
-                  answerId={ans._id}
-                  questionId={_id}
-                  createUpdateAnswerProps={createUpdateAnswerProps}
-                />
+                {userEmail === email ? (
+                  <DropdownAnswer
+                    answerId={ans._id}
+                    questionId={_id}
+                    createUpdateAnswerProps={createUpdateAnswerProps}
+                  />
+                ) : null}
               </div>
             );
           })

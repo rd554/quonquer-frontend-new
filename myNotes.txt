@@ -32,18 +32,21 @@ git push origin master
 
 // Things left
 
-// Public/Anonymous
-// user.name on community page
-// load more on community page
+// load more on community page 
 // claps & share
-// profile page UI and image upload
-// Search Blog UI
+// show more comments on community page
 // Home page latest blogs UI
 // Home page Video
-// Google, facebook login
+// Head section
 
 
-// Blogs comment system with claps and social share
+
+
+// Public/Anonymous - DONE
+// user.name on community page - DONE
+// Search Blog UI - DONE
 
 
 // Footer pages (About, Vision)
+// profile page UI and image upload
+// sign out

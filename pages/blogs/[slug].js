@@ -59,7 +59,7 @@ const SingleBlog = ({ blog, query }) => {
       return (
         <Link key={i} href={`/categories/${c.slug}`}>
           <a>
-            <button className="cursor-pointer rounded-full bg-gray-600 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+            <button className="cursor-pointer rounded-full categories text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
               {c.name}
             </button>
           </a>
@@ -73,7 +73,7 @@ const SingleBlog = ({ blog, query }) => {
       return (
         <Link key={i} href={`/tags/${t.slug}`}>
           <a>
-            <button className="cursor-pointer rounded-full bg-gray-700 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+            <button className="cursor-pointer rounded-full tags text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
               {t.name}
             </button>
           </a>
@@ -83,15 +83,17 @@ const SingleBlog = ({ blog, query }) => {
   };
 
   const showRelatedBlog = () => {
-    return related.map((blog, i) => {
-      return (
-        <section>
-          <div key={i}>
-            <SmallCard blog={blog} />
-          </div>
-        </section>
-      );
-    });
+    return related && related.length
+      ? related.map((blog, i) => {
+          return (
+            <section>
+              <div key={i}>
+                <SmallCard blog={blog} />
+              </div>
+            </section>
+          );
+        })
+      : null;
   };
 
   const showComments = () => {
@@ -114,7 +116,7 @@ const SingleBlog = ({ blog, query }) => {
           <article className="ml-3 mr-3">
             <div>
               <section>
-                <h1 className="block text-gray-700 text-2xl mt-4 font-semibold">
+                <h1 className="block text-gray-700 text-2xl mt-5 font-semibold">
                   {blog.title}
                 </h1>
               </section>
@@ -169,7 +171,7 @@ const SingleBlog = ({ blog, query }) => {
                   <div>{renderHTML(blog.body)}</div>
                 </section>
               </div>
-              <section>
+              <section className="flex justify-end flex-row mb-2 mr-2">
                 <div>{showBlogCategories(blog)}</div>
                 <div>{showBlogTags(blog)}</div>
               </section>

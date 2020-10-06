@@ -55,7 +55,7 @@ const SearchBlog = () => {
           return (
             <div key={i}>
               <Link href={`/blogs/${blog.slug}`}>
-                <a>{blog.title}</a>
+                <a className="text-blue-500 text-xl">{blog.title}</a>
               </Link>
             </div>
           );
@@ -72,7 +72,7 @@ const SearchBlog = () => {
     return (
       <React.Fragment>
         <div>
-          <div className="flex w-full flex-wrap content-center pr-3 mt-2">
+          <div className="flex w-full flex-wrap content-center pr-3 mt-4">
             <Link href="/">
               <img
                 src={back}
@@ -103,10 +103,10 @@ block w-full appearance-none leading-normal rounded  text-lg"
   };
 
   return (
-    <>
+    <React.Fragment>
       {niceOne()}
-      {searched && searchedBlogs(results)}
-    </>
+      <div className="mx-3 mt-3">{searched && searchedBlogs(results)}</div>
+    </React.Fragment>
   );
 };
 export default SearchBlog;

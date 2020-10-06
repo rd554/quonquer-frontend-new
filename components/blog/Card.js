@@ -7,7 +7,7 @@ const Card = ({ blog }) => {
     return blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
         <a>
-          <button className="cursor-pointer rounded-full bg-gray-600 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+          <button className="cursor-pointer rounded-full categories text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
             {c.name}
           </button>
         </a>
@@ -19,7 +19,7 @@ const Card = ({ blog }) => {
     return blog.tags.map((t, i) => (
       <Link key={i} href={`/tags/${t.slug}`}>
         <a>
-          <button className="cursor-pointer rounded-full bg-gray-700 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+          <button className="cursor-pointer rounded-full tags text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
             {t.name}
           </button>
         </a>
@@ -60,10 +60,8 @@ const Card = ({ blog }) => {
           </div>
         </section>
       </div>
-      <section className="flex flex-row mb-2">
-        <div className="mt-2">
-          {showBlogCategories(blog)} &nbsp; &nbsp; &nbsp;
-        </div>
+      <section className="flex justify-end flex-row mb-2 mr-2">
+        <div className="mt-2">{showBlogCategories(blog)} &nbsp;</div>
         <div className="mt-2">{showBlogTags(blog)}</div>
       </section>
     </div>

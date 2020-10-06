@@ -178,6 +178,14 @@ body.modal-active {
   font-weight: 700;
 }
 
+.categories {
+  background-color: #49ab9e;
+}
+
+.tags {
+  background-color: #f1863b;
+}
+
 .dark-blue {
   background-color: #100d52;
 }
@@ -206,7 +214,7 @@ body.modal-active {
 } */
 
 .app-main-bg {
-  background-color: #fbd77c;
+  background-color: #ffe074;
   height: 700px;
 }
 
@@ -327,4 +335,183 @@ body.modal-active {
   left: 0;
   top: -22.8571428571px;
   color: rgba(189, 195, 199, 1);
+}
+
+/* For Claps  */
+
+.container {
+}
+
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+.canvas .total-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  margin-top: -45px;
+  color: gray;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.canvas .total-counter.fader {
+  animation: fade-in 1400ms forwards;
+}
+.canvas .clap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  z-index: 2;
+  background: #fff;
+  cursor: pointer;
+}
+.canvas .clap-container .clap-icon {
+  font-size: 30px;
+  color: #100d52;
+  width: 30px;
+  height: 30px;
+}
+.canvas .clap-container:hover {
+  border: 1px solid #100d52;
+}
+.canvas .clap-container.scale {
+  animation: scaleAndBack 700ms forwards;
+}
+.canvas .click-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 132px;
+  background-color: #100d52;
+  border-radius: 50%;
+  z-index: 1;
+}
+.canvas .click-counter .counter {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #fff;
+}
+.canvas .click-counter.first-active {
+  animation: first-bump-in 1s forwards;
+}
+.canvas .click-counter.active {
+  animation: bump-in 1s forwards;
+}
+.canvas .clap-container-sonar {
+  width: 30px;
+  height: 30px;
+  background: #100d52;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+}
+.canvas .hover-active {
+  animation: sonar-wave 2s forwards;
+}
+.canvas .particles-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  /* border: 1px solid gray; */
+  /* z-index: 3; */
+}
+/* .canvas .particles-container .triangle {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 10px solid red;
+  border-bottom: 4px solid transparent;
+  position: absolute;
+}
+.canvas .particles-container .triangle .square {
+  width: 5px;
+  height: 5px;
+  background: #6c5ce7;
+  position: absolute;
+  left: -15px;
+  top: 0;
+}
+.canvas .particles-container .pop-top {
+  animation: pop-top 1s forwards;
+}
+.canvas .particles-container .pop-top-left {
+  animation: pop-top-left 1s forwards;
+}
+.canvas .particles-container .pop-top-right {
+  animation: pop-top-right 1s forwards;
+}
+.canvas .particles-container .pop-bottom-right {
+  animation: pop-bottom-right 1s forwards;
+}
+.canvas .particles-container .pop-bottom-left {
+  animation: pop-bottom-left 1s forwards;
+} */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes first-bump-in {
+  0% {
+    transform: translateY(-65px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-80px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+}
+@keyframes bump-in {
+  0% {
+    transform: translateY(-80px) scale(0.9);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-80px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleAndBack {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

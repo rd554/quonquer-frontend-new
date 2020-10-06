@@ -57,7 +57,7 @@ const AnswerComp = ({ isForAnswerUpdate, answerObj, answerId, questionId }) => {
 
   const postAnswer = () => {
     return (
-      <>
+      <React.Fragment>
         {/*<Private> */}
         <form onSubmit={clickSubmit}>
           <div className="flex w-full justify-between mt-4">
@@ -118,11 +118,11 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal"
           </div>
         </form>
         {/*</Private> */}
-      </>
+      </React.Fragment>
     );
   };
 
-  return <>{postAnswer()}</>;
+  return <React.Fragment>{postAnswer()}</React.Fragment>;
 };
 
 export default AnswerComp;

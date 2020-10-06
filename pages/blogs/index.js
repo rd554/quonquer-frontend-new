@@ -94,7 +94,7 @@ const Blogs = ({
           return (
             <Link href={`/categories/${c.slug}`} key={i}>
               <a>
-                <button className="cursor-pointer rounded-full bg-gray-600 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+                <button className="cursor-pointer rounded-full categories text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
                   {c.name}
                 </button>
               </a>
@@ -111,7 +111,7 @@ const Blogs = ({
         {tags.map((t, i) => (
           <Link href={`/tags/${t.slug}`} key={i}>
             <a className="ml-2">
-              <button className="cursor-pointer rounded-full bg-gray-700 text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
+              <button className="cursor-pointer rounded-full tags text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">
                 {t.name}
               </button>
             </a>

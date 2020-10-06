@@ -1,11 +1,11 @@
 import SearchBlog from "../../components/blog/SearchBlog";
 
-const search = () => {
+const Search = () => {
   return (
-    <div>
+    <div className="h-screen pt-1">
       <SearchBlog />
     </div>
   );
 };
 
-export default search;
+export default Search;
