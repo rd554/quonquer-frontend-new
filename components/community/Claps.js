@@ -16,7 +16,6 @@ export function Claps({ clapsNumbers = 0 }) {
       setClapStyle("clap-container");
       setClickerStyle("click-counter");
     }, 700);
-    handleClaps();
   };
 
   const handleClaps = (questionId) => {

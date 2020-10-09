@@ -2,7 +2,7 @@ import user from "../../public/images/001-user.png";
 import { getCookie } from "../../actions/auth";
 import { useRouter } from "next/router";
 
-const CreateQuestion = ({ currentUserName }) => {
+const CreateQuestion = ({ currentUserName, currentUserPhoto }) => {
   const token = getCookie("token");
   const router = useRouter();
   const handleCreateQuestionClick = () => {

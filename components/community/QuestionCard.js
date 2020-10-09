@@ -4,7 +4,6 @@ import { getCookie } from "../../actions/auth";
 import { Dropdown } from "./Dropdown";
 import { DropdownAnswer } from "./DropdownAnswer";
 import { Claps } from "./Claps";
-
 import moment from "moment";
 import clap from "../../public/images/clap.png";
 import ans from "../../public/images/ans_icon.png";

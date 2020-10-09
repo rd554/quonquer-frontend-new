@@ -35,7 +35,7 @@ const Card = ({ blog }) => {
             <img
               className="w-full rounded"
               style={{ maxHeight: "auto", width: "auto" }}
-              src={`${API}/blog/photo/${blog.slug}`}
+              src={blog.photo}
               alt={blog.title}
             />
             <div className="px-6 py-4">

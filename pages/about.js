@@ -1,15 +1,23 @@
 import Layout from "../components/Layout";
-import user from "../public/images/001-user.png";
+import foundr from "../public/foundr.png";
+import AboutPage from "../components/AboutPage";
+
+import WorkWithUs from "../components/WorkWithUs";
 
 const About = () => {
   return (
     <Layout>
-      <div className="w-1/6 content-center mx-auto mt-12">
-        <img
-          src={user}
-          className="rounded-full shadow-md border-2 w-16 h-16"
-          alt="user"
-        />
+      <div>
+        <div>
+          <img src={foundr} className="items-center mx-auto" alt="founder" />
+        </div>
+        <div>
+          <AboutPage />
+        </div>
+
+        <div>
+          <WorkWithUs />
+        </div>
       </div>
     </Layout>
   );

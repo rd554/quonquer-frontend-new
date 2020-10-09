@@ -4,6 +4,7 @@ import facebook from "../public/images/facebook.png";
 import instagram from "../public/images/instagram.png";
 import twitter from "../public/images/twitter.png";
 import linkedin from "../public/images/linkedin.png";
+import WorkWithUs from "./WorkWithUs";
 
 const Footer = () => {
   return (
@@ -78,11 +79,7 @@ const Footer = () => {
             <a className="text-white text-xs">&nbsp;About me&nbsp;-</a>
           </Link>
         </div>
-        <div className="mt-3">
-          <Link href="/about">
-            <a className="text-white text-xs">&nbsp;Vision&nbsp;-</a>
-          </Link>
-        </div>
+
         <div className="mt-3">
           <Link href="/about">
             <a className="text-white text-xs">&nbsp;Work with us</a>

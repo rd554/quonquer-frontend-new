@@ -116,7 +116,7 @@ const SingleBlog = ({ blog, query }) => {
           <article className="ml-3 mr-3">
             <div>
               <section>
-                <h1 className="block text-gray-700 text-2xl mt-5 font-semibold">
+                <h1 className="block text-gray-700 text-2xl mt-5 font-semibold pt-4">
                   {blog.title}
                 </h1>
               </section>
@@ -127,7 +127,7 @@ const SingleBlog = ({ blog, query }) => {
                 </div>
               </section>
               <div>
-                <img src={`{API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                <img src={blog.photo} alt={blog.title} />
               </div>
               <section className="flex mt-6 max-w-2xl justify-start mb-10">
                 <div className="w-10 h-10 mr-4">

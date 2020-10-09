@@ -25,14 +25,16 @@ const Community = ({
   const [displayQuestions, setDisplayQuestions] = useState(questions);
   const [currentUserEmail, setCurrentUserEmail] = useState("");
   const [currentUserName, setCurrentUserName] = useState("");
+  const [currentUserPhoto, setCurrentUserPhoto] = useState("");
   // const userEmail = localStorage.getItem("user")?.email || "";
 
   useEffect(() => {
     if (user && JSON.parse(user).email) {
       setCurrentUserEmail(JSON.parse(user).email);
       setCurrentUserName(JSON.parse(user).name);
+      setCurrentUserPhoto(JSON.parse(user).photo);
     }
-  }, [currentUserEmail, currentUserName]);
+  }, [currentUserEmail, currentUserName, currentUserPhoto]);
 
   const user = getCookie("user");
 
@@ -112,7 +114,10 @@ const Community = ({
       <Layout>
         <main>
           <div>
-            <CreateQuestion currentUserName={currentUserName} />
+            <CreateQuestion
+              currentUserName={currentUserName}
+              currentUserPhoto={currentUserPhoto}
+            />
             <div>{showAllQuestions()}</div>
             <div>{showLoadedQuestions()}</div>
             <div className="text-center">{loadMoreButton()}</div>

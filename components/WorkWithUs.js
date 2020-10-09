@@ -1,0 +1,18 @@
+const WorkWithUs = () => {
+  return (
+    <React.Fragment>
+      <div className="mx-3 mt-4 mb-4">
+        <p className="text-xl font-semibold">Work with us</p>
+        <p className="text-lg mt-2">
+          Explore your passion of Psychology within you! Work with us and get
+          hands on experience in Clinical Psychology and learn everything from
+          soft kills required in the field to minute details about the work.
+          Kindly contact us on Instagram and DM us with "I want to Work with
+          you".
+        </p>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default WorkWithUs;

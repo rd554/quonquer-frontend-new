@@ -61,6 +61,20 @@ export const singleBlog = async (slug) => {
   }
 };
 
+export const blogForHomePage = async () => {
+  try {
+    const response = await fetch(`${API}/api/blogForHomePage`, {
+      method: "GET"
+    });
+    let data = await response.json();
+    console.log('daa' , data);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
+
 export const listRelated = async (blog) => {
   try {
     const response = await fetch(`${API}/api/blogs/related`, {
