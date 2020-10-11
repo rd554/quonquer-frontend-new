@@ -2,8 +2,8 @@ const AboutPage = () => {
   return (
     <React.Fragment>
       <div className="mx-3">
-        <p className="text-xl font-semibold">ABOUT ME</p>
-        <p className="text-lg mt-2">
+        <p className="text-xl text-blue-900 font-semibold">ABOUT ME</p>
+        <p className="text-md text-gray-800 mt-2">
           Sonam Chandnani is on a mission to raise mental health awareness.
           She's passionate about empowering individuals to work on their mental
           health well being. She is successfully practising Clinical Psychology

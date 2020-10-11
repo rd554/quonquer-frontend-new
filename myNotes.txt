@@ -42,11 +42,9 @@ git push origin master
 
 
 
-// Public/Anonymous - DONE
-// user.name on community page - DONE
-// Search Blog UI - DONE
 
-
-// Footer pages (About, Vision)
-// profile page UI and image upload
-// sign out
+// Menu page signup
+// claps
+// share button check
+// load more questions
+// profile page backend/frontend

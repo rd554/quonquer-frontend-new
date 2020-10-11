@@ -78,19 +78,18 @@ export const signin = async (user) => {
   }
 };
 
-export const signout = async (next) => {
+export const signout = (next) => {
   removeCookie("token");
   removeLocalStorage("user");
   next();
 
-  try {
-    const response = await fetch(`${API}/api/signout`, {
+  return fetch(`${API}/api/signout`, {
       method: "GET",
-    });
-    console.log("signout success");
-  } catch (err) {
-    return err;
-  }
+    })
+    .then (response => {
+      console.log('signout success')
+    })
+    .catch(err => console.log(err))
 };
 
 // set cookie
@@ -151,6 +150,19 @@ export const isAuth = () => {
     }
   }
 };
+
+export const updateUser = (user, next) => {
+  if (process.browser) {
+    if (localStorage.getItem('user')) {
+      let auth = JSON.parse(localStorage.getItem('user'))
+      auth = user;
+      localStorage.setItem('user', JSON.stringify(auth))
+      next()
+    }
+  }
+}
+
+
 
 export const forgotPassword = async (email) => {
   try {

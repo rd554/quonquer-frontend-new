@@ -1,12 +1,16 @@
 import Link from "next/link";
+import {signout, isAuth} from '../actions/auth'
+import Router from 'next/router'
 import logo from "../public/app_img.jpg";
 import facebook from "../public/images/facebook.png";
 import instagram from "../public/images/instagram.png";
 import twitter from "../public/images/twitter.png";
 import linkedin from "../public/images/linkedin.png";
-import WorkWithUs from "./WorkWithUs";
+
 
 const Footer = () => {
+  
+  
   return (
     <div className="dark-blue w-full min:h-64 pb-24 pt-4 z-10">
       <div className="flex mt-4 max-w-2xl m-auto">
@@ -27,6 +31,13 @@ const Footer = () => {
                 <li className="w-24 m-auto">Sitemap</li>
               </a>
             </Link>
+            {isAuth() && (
+              
+              <a>
+                <li className="w-24 m-auto" onClick={() => signout(() => Router.replace(`/signin`))}>Sign out</li>
+              </a>
+            
+            )}
           </ul>
         </div>
         <div className="w-1/2 text-white mr-12">

@@ -1,9 +1,9 @@
 const WorkWithUs = () => {
   return (
     <React.Fragment>
-      <div className="mx-3 mt-4 mb-4">
-        <p className="text-xl font-semibold">Work with us</p>
-        <p className="text-lg mt-2">
+      <div className="mx-3 mt-5 mb-8">
+        <p className="text-xl text-blue-900 font-semibold">Work with us</p>
+        <p className="text-md text-gray-800 mt-2">
           Explore your passion of Psychology within you! Work with us and get
           hands on experience in Clinical Psychology and learn everything from
           soft kills required in the field to minute details about the work.

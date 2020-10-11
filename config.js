@@ -3,7 +3,7 @@ const { publicRuntimeConfig } = getConfig();
 
 export const API = publicRuntimeConfig.PRODUCTION
   ? "https://quonquer.com"
-  : "http://192.168.43.172:8000";
+  : "http://192.168.0.100:8000";
 
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 

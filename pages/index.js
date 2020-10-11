@@ -11,7 +11,7 @@ const Home = ({ latestBlogs }) => {
         <div className="app-main-bg w-full relative mb-8">
           <ReactPlayer
             url="https://quonquerbucket.s3.ap-south-1.amazonaws.com/homevideo.mov"
-            height="80%"
+            height="100%"
             width="100%"
             playing={true}
             muted
@@ -43,6 +43,28 @@ export async function getStaticPaths() {
     fallback: true 
   };
 }
+
+// <div className="mt-8">
+        // <LatestBlogs latestBlogs={latestBlogs}/>
+        // </div>
+
+// export const getStaticProps = async (context) => {
+//   const res = await blogForHomePage()
+//   return {
+//     props: {
+//       latestBlogs : res
+//     },
+//   }
+// };
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { } } // See the "paths" section below
+//     ],
+//     fallback: true 
+//   };
+// }
 
 
 export default Home;

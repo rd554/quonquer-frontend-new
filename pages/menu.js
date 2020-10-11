@@ -7,7 +7,7 @@ import linkedin from "../public/images/linkedin.png";
 
 const Menu = () => {
   return (
-    <>
+    <React.Fragment>
       <div>
         <Link href="/">
           <img src={back} alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
@@ -20,19 +20,15 @@ const Menu = () => {
               <li className="pt-2 text-lg">Blogs</li>
             </a>
           </Link>
-          <Link href="/tags">
-            <a>
-              <li className="pt-2 text-lg">Tags</li>
-            </a>
-          </Link>
-          <Link href="/category">
-            <a>
-              <li className="pt-2 text-lg">Category</li>
-            </a>
-          </Link>
+          
           <Link href="/community">
             <a>
               <li className="pt-2 text-lg">Community</li>
+            </a>
+          </Link>
+          <Link href="/about">
+            <a>
+              <li className="pt-2 text-lg">About</li>
             </a>
           </Link>
         </ul>
@@ -117,7 +113,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

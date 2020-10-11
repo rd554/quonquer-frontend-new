@@ -7,6 +7,7 @@ import Profile from "../public/svg/user.svg";
 import { API, DOMAIN } from "../config";
 
 const BottomBar = () => {
+ 
   return (
     <div>
       <section className="fixed bg-white h-12 w-full bottom-0 flex justify-between px-4 shadow-inner">

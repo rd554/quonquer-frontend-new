@@ -38,7 +38,7 @@ const Card = ({ blog }) => {
               src={blog.photo}
               alt={blog.title}
             />
-            <div className="px-6 py-4">
+            <div className="px-2 py-4">
               <div className="font-bold text-xl mb-2 whitespace-pre-wrap">
                 {blog.title}
               </div>
@@ -47,10 +47,10 @@ const Card = ({ blog }) => {
         </Link>
       </section>
       <div>
-        <section className="ml-2 mr-2">
+        <section className="mx-2">
           <div>
             <Link href={`/blogs/${blog.slug}`}>
-              <a>{renderHTML(blog.excerpt)}</a>
+              <a >{renderHTML(blog.excerpt)}</a>
             </Link>
           </div>
           <div>
