@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { postClaps } from "../../actions/community";
 import _ from "lodash";
 import claps from "../../public/svg/thumb-up.svg";
+import { getCookie } from "../../actions/auth";
 
-export function Claps({ clapsNumbers = 0 }) {
+export function Claps({ clapsNumbers = 0, questionId }) {
   const [clapStyle, setClapStyle] = useState("clap-container");
   const [clickerStyle, setClickerStyle] = useState("click-counter");
   const [countNumber, setCountNumber] = useState(clapsNumbers);
+
+  const token = getCookie("token");
 
   const handleClapClick = () => {
     setClapStyle("clap-container");
@@ -16,17 +19,18 @@ export function Claps({ clapsNumbers = 0 }) {
       setClapStyle("clap-container");
       setClickerStyle("click-counter");
     }, 700);
-  };
 
-  const handleClaps = (questionId) => {
-    postClaps(questionId).then((res) => {
+
+
+    postClaps(questionId, countNumber, token).then((res) => {
       if (res.error) {
         console.log(res.error);
       } else {
-        setCountNumber(res.countNumber);
+        setCountNumber(res?.question?.claps);
       }
     });
   };
+
 
   return (
     <React.Fragment>
@@ -37,7 +41,7 @@ export function Claps({ clapsNumbers = 0 }) {
             <div id="clap" className={clapStyle} onClick={handleClapClick}>
               <img src={claps} alt="claps" />
             </div>
-            <div id="clicker" className={clickerStyle} onClick={handleClaps}>
+            <div id="clicker" className={clickerStyle}>
               <span className="counter">{`+${countNumber}`}</span>
             </div>
             <p className="text-blue-900 text-lg ml-24 counter">{`+${countNumber}`}</p>

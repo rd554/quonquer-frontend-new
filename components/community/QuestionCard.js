@@ -21,6 +21,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
     _id,
     answers,
     questionScope,
+    claps
   } = ques;
 
   const token = getCookie("token");
@@ -33,21 +34,21 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
     );
   };
 
-  // const handleClick = async (question, url) => {
-  //   if (typeof navigator.share === "undefined" || !navigator.share) {
-  //     alert("Your browser does not support Android Native Share");
-  //   } else {
-  //     const QuestionConst = question;
-  //     const URLConst = url;
+  const handleShareClick = async (question, url) => {
+    if (typeof navigator.share === "undefined" || !navigator.share) {
+      alert("Your browser does not support Android Native Share");
+    } else {
+      const QuestionConst = question;
+      const URLConst = url;
 
-  //     try {
-  //       await navigator.share({ question: QuestionConst, url: URLConst });
-  //     } catch (error) {
-  //       console.log("Error sharing: " + error);
-  //       return;
-  //     }
-  //   }
-  // };
+      try {
+        await navigator.share({ question: QuestionConst, url: URLConst });
+      } catch (error) {
+        console.log("Error sharing: " + error);
+        return;
+      }
+    }
+  };
 
   return (
     <div className="cursor-pointer max-w-md rounded shadow-lg mx-3 bg-white align-top my-2 flex flex-col rounded-community mb-4">
@@ -79,7 +80,10 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
           <div className="h-10 w-full flex justify-center px-8 items-center">
             <img src={clap} alt="thumps up" className="h-5 w-5 mt-1" />
             <p className="dark-blue-text text-xs mr-20">
-              <Claps />
+              <Claps 
+              questionId={_id}
+              clapsNumbers={claps}
+              />
             </p>
           </div>
         </div>
@@ -95,7 +99,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
         <div className="w-1/3 text-black flex-1 text-center ">
           <a>
             <div
-              // onClick={handleClick()}
+              onClick={handleShareClick}
               className="h-10 w-full flex justify-center px-8 items-center"
             >
               <img src={share} alt="share" className="h-5 w-5 mt-1" />
