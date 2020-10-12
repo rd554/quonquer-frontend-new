@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import foundr from '../../public/foundr.png'
+import user from "../../public/images/001-user.png";
+import foundr from '../../public/svg/user.svg'
 import Router from "next/router";
+import {API} from '../../config'
 import { getCookie, isAuth, updateUser } from "../../actions/auth";
 import { getProfile, update } from "../../actions/user";
 
@@ -96,9 +98,10 @@ const ProfileUpdate = () => {
   };
 
   const ProfileUpdateForm = () => (
-    <form onSubmit={handleSubmit} className="">
-      <div className="mt-4 ml-12 mr-12">
-        <div className="block text-gray-900 text-center pl-10 pr-64 font-semibold">
+    
+    <form onSubmit={handleSubmit}>
+      <div className="mx-12 mt-8">
+        <div className="text-gray-900 mx-8">
           <input
             onChange={handleChange("photo")}
             type="file"
@@ -162,17 +165,21 @@ const ProfileUpdate = () => {
         </div>
       </div>
     </form>
+    
   );
 
   return (
+    
     <React.Fragment>
+    
       <div>
       <div>
-      <img src={foundr} className="items-center mx-auto" alt="profile picture" />
+      <img src={user} className="items-center mx-auto pt-6" alt="profile picture" />
       </div>
         <div>{ProfileUpdateForm()}</div>
       </div>
     </React.Fragment>
+    
   );
 };
 

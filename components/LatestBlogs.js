@@ -10,7 +10,7 @@ const LatestBlogs = ({latestBlogs}) => {
         <div className="flex flex-wrap mx-3 mb-6">
         {latestBlogs.map((blog, i) => {
             const {title , excerpt , photo} = blog
-            blog.title = smartTrim(title, 25, " ", " ...");
+            blog.title = smartTrim(title, 20, " ", " ...");
             return (
               <Link key={i} href={`/blogs/${blog.slug}`}><a><div 
               className="relative w-full 

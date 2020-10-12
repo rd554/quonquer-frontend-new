@@ -1,12 +1,19 @@
 import Link from "next/link";
 import Home from "../public/svg/home.svg";
 import Menu from "../public/svg/up-chevron.svg";
+import {getCookie} from '../actions/auth'
+import { useRouter } from "next/router";
 import search from "../public/svg/loupe.svg";
 import Community from "../public/svg/help.svg";
 import Profile from "../public/svg/user.svg";
 import { API, DOMAIN } from "../config";
 
 const BottomBar = () => {
+  const token = getCookie("token");
+  const router = useRouter();
+  const handleProfileClick = () => {
+    router.push(token ? '/user' : '/signin')
+  }
  
   return (
     <div>
@@ -56,8 +63,8 @@ const BottomBar = () => {
             </a>
           </Link>
         </div>
-        <div className="w-8 content-center cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1">
-          <Link href="/user">
+        <div className="w-8 content-center cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1" onClick={handleProfileClick}>
+         
             <a>
               <div className="ml-2">
                 <img src={Profile} alt="Profile" />
@@ -66,7 +73,7 @@ const BottomBar = () => {
                 <p className="dark-blue-text font-light text-xs">Profile</p>
               </div>
             </a>
-          </Link>
+          
         </div>
       </section>
     </div>
