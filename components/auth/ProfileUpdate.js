@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import foundr from '../../public/foundr.png'
 import Router from "next/router";
 import { getCookie, isAuth, updateUser } from "../../actions/auth";
 import { getProfile, update } from "../../actions/user";
@@ -96,9 +97,8 @@ const ProfileUpdate = () => {
 
   const ProfileUpdateForm = () => (
     <form onSubmit={handleSubmit} className="">
-      <div className="mt-4 ml-12 mr-12 pt-6 pb-6">
+      <div className="mt-4 ml-12 mr-12">
         <div className="block text-gray-900 text-center pl-10 pr-64 font-semibold">
-          <label>Profile Photo</label>
           <input
             onChange={handleChange("photo")}
             type="file"
@@ -106,7 +106,7 @@ const ProfileUpdate = () => {
           />
         </div>
         <div className="block text-gray-900 mt-4 pl-10 pr-64 font-semibold">
-          <label>Username*</label>
+          <label>Username</label>
           <input
             onChange={handleChange("username")}
             value={username}
@@ -115,7 +115,7 @@ const ProfileUpdate = () => {
           />
         </div>
         <div className="block text-gray-900 mt-4 pl-10 pr-64 font-semibold">
-          <label>Name*</label>
+          <label>Name</label>
           <input
             onChange={handleChange("name")}
             value={name}
@@ -124,7 +124,7 @@ const ProfileUpdate = () => {
           />
         </div>
         <div className="block text-gray-900 mt-4 pl-10 pr-64 font-semibold">
-          <label>Email*</label>
+          <label>Email</label>
           <input
             onChange={handleChange("email")}
             value={email}
@@ -142,7 +142,7 @@ const ProfileUpdate = () => {
           />
         </div>
         <div className="block text-gray-900 mt-4 pl-10 pr-64 font-semibold">
-          <label>Password*</label>
+          <label>Password</label>
           <input
             onChange={handleChange("password")}
             value={password}
@@ -167,6 +167,9 @@ const ProfileUpdate = () => {
   return (
     <React.Fragment>
       <div>
+      <div>
+      <img src={foundr} className="items-center mx-auto" alt="profile picture" />
+      </div>
         <div>{ProfileUpdateForm()}</div>
       </div>
     </React.Fragment>

@@ -7,7 +7,7 @@ const smallCard = ({ blog }) => {
   const {title} = blog
   blog.title = smartTrim(title, 25, " ", " ...");
   return (
-    <div className="">
+    <div>
       <div className="cursor-pointer rounded mt-4 ml-3 mr-3 shadow-lg bg-white align-top my-2">
         <section>
           <Link href={`/blogs/${blog.slug}`}>

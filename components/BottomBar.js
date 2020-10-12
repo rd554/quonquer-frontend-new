@@ -10,7 +10,7 @@ const BottomBar = () => {
  
   return (
     <div>
-      <section className="fixed bg-white h-12 w-full bottom-0 flex justify-between px-4 shadow-inner">
+      <section className="fixed bg-white h-12 w-full bottom-0 flex justify-between px-4 shadow-inner z-20">
         <div className="w-8 cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1">
           <Link href="/">
             <a>

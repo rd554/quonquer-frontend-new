@@ -53,11 +53,10 @@ export const createAnswer = async (
   }
 };
 
-export const listAllCards = async (skip, limit) => {
+export const listAllCards = async (pageNo = 1) => {
   try {
     const d = {
-      limit,
-      skip,
+      pageNo
     };
     const response = await fetch(`${API}/api/community-questions-answers`, {
       method: "POST",

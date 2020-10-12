@@ -88,7 +88,7 @@ const SingleBlog = ({ blog, query }) => {
     return related && related.length
       ? related.map((blog, i) => {
           return (
-            <section key={i}>
+            <section>
               <div key={i}>
               <p className="text-lg font-semibold">Related blogs</p>
                 <SmallCard blog={blog} />

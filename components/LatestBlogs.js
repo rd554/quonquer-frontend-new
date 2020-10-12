@@ -23,7 +23,7 @@ const LatestBlogs = ({latestBlogs}) => {
              
               <img src={photo} 
               className="w-32 object-cover relative" 
-              alt="asdjasd"/>
+              alt="blog photo"/>
           </div></a></Link>
             
             )

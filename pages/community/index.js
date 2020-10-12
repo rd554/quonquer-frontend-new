@@ -13,19 +13,16 @@ import { getCookie } from "../../actions/auth";
 
 const Community = ({
   questions,
-  questionSkip,
-  totalQuestions,
   questionsLimit,
   router,
 }) => {
-  const [limit, setLimit] = useState(questionsLimit);
-  const [skip, setSkip] = useState(0);
-  const [size, setSize] = useState(totalQuestions);
-  const [loadedQuestions, setLoadedQuestions] = useState([]);
+  const [pageNo, setPageNo] = useState(2);
+  // const [loadedQuestions, setLoadedQuestions] = useState([]);
   const [displayQuestions, setDisplayQuestions] = useState(questions);
   const [currentUserEmail, setCurrentUserEmail] = useState("");
   const [currentUserName, setCurrentUserName] = useState("");
   const [currentUserPhoto, setCurrentUserPhoto] = useState("");
+  const [isLoadMoreLoading, setLoadMoreLoading] = useState(false);
   // const userEmail = localStorage.getItem("user")?.email || "";
 
   useEffect(() => {
@@ -38,33 +35,46 @@ const Community = ({
 
   const user = getCookie("user");
 
-  const loadMore = () => {
-    let toSkip = skip + limit;
-    listAllCards(toSkip, limit).then((res) => {
+  const loadMore = async () => {
+    setLoadMoreLoading(true)
+    const res = await listAllCards(pageNo);
       if (res.error) {
-        console.log(error);
+        console.log(res.error);
       } else {
-        setLoadedQuestions([...loadedQuestions, ...res.questions]);
-        setSize(res.size);
-        setSkip(toSkip);
+        if(res.questions.length === 0){
+           return  
+        }
+        setLoadMoreLoading(false)
+        let newDisplayQuestions  = [...displayQuestions, ...res.questions]
+        setDisplayQuestions(newDisplayQuestions)
       }
-    });
+
+      let updatedPageNumber = pageNo + 1
+      setPageNo(updatedPageNumber)
+    // listAllCards(toSkip, limit).then((res) => {
+    //   if (res.error) {
+    //     console.log(error);
+    //   } else {
+    //     setLoadedQuestions([...loadedQuestions, ...res.questions]);
+    //     setSize(res.size);
+    //     setSkip(toSkip);
+    //   }
+    // });
   };
 
   const loadMoreButton = () => {
-    return (
-      size > 0 &&
-      size >= limit && (
-        <button
-          className="inline-block dark-blue
+    if(isLoadMoreLoading){
+      return null
+    }else {
+      return <button
+      className="inline-block dark-blue
       text-white px-2 py-2 mt-3 mb-3 uppercase tracking-wider
       text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-lg shadow-md"
           onClick={loadMore}
         >
-          load more
-        </button>
-      )
-    );
+      load more
+    </button>
+    }
   };
 
   const showLoadedQuestions = () => {
@@ -84,22 +94,22 @@ const Community = ({
       : null;
   };
 
-  const showAllQuestions = () => {
-    return loadedQuestions && loadedQuestions.length
-      ? loadedQuestions.map((question, i) => {
-          return (
-            <div key={i}>
-              <QuestionCard
-                userEmail={currentUserEmail}
-                key={i}
-                questions={question}
-                notifyParentQuestionList={notifyParentQuestionList}
-              />
-            </div>
-          );
-        })
-      : null;
-  };
+  // const showAllQuestions = () => {
+  //   return loadedQuestions && loadedQuestions.length
+  //     ? loadedQuestions.map((question, i) => {
+  //         return (
+  //           <div key={i}>
+  //             <QuestionCard
+  //               userEmail={currentUserEmail}
+  //               key={i}
+  //               questions={question}
+  //               notifyParentQuestionList={notifyParentQuestionList}
+  //             />
+  //           </div>
+  //         );
+  //       })
+  //     : null;
+  // };
 
   const notifyParentQuestionList = (questionId) => {
     console.log("notifyParentQuestionList");
@@ -118,7 +128,6 @@ const Community = ({
               currentUserName={currentUserName}
               currentUserPhoto={currentUserPhoto}
             />
-            <div>{showAllQuestions()}</div>
             <div>{showLoadedQuestions()}</div>
             <div className="text-center">{loadMoreButton()}</div>
           </div>
@@ -128,17 +137,15 @@ const Community = ({
   );
 };
 
+// <div>{showAllQuestions()}</div>
+
 Community.getInitialProps = async () => {
-  let skip = 0;
-  let limit = 10;
-  const res = await listAllCards(skip, limit);
+  const res = await listAllCards();
   if (res.error) {
     console.log(res.error);
   } else {
     return {
       questions: res.questions,
-      questionSkip: skip,
-      questionsLimit: limit,
       totalQuestions: res.size,
     };
   }

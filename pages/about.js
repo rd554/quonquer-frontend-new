@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import foundr from "../public/foundr.png";
+import f from "../public/f.png";
 import AboutPage from "../components/AboutPage";
 
 import WorkWithUs from "../components/WorkWithUs";
@@ -9,7 +9,7 @@ const About = () => {
     <Layout>
       <div>
         <div>
-          <img src={foundr} className="items-center mx-auto" alt="founder" />
+          <img src={f} className="items-center mx-auto" alt="founder" />
         </div>
         <div>
           <AboutPage />

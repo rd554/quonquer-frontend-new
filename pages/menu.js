@@ -104,7 +104,7 @@ const Menu = () => {
               <a className="text-black mr-4">
                 New user? &nbsp;
                 <span>
-                  <Link href="/signup">
+                  <Link href="/signin">
                     <a className="text-blue-500">Signup</a>
                   </Link>
                 </span>

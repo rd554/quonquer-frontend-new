@@ -71,7 +71,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
         </div>
       </div>
       <div className="py-6 text-blue-900">
-        <div className="text-xl mb-2 px-4">{question}</div>
+        <div className="text-xl mb-2 px-4 text-gray-700">{question}</div>
         <div className="bg-gray-200 app-line-height w-full"></div>
       </div>
       <div className="flex max-w-5xl w-full self-center home-menu-login-text mb-6 justify-center">
@@ -99,7 +99,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
               className="h-10 w-full flex justify-center px-8 items-center"
             >
               <img src={share} alt="share" className="h-5 w-5 mt-1" />
-              <p className="dark-blue-text text-xs ml-2 mt-1">Share</p>
+              <p className="dark-blue-text text-sm ml-2 mt-1">Share</p>
             </div>
           </a>
         </div>
@@ -124,7 +124,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
                     <p className="font-medium">
                       {answerScope === PUBLIC ? name : ANONYMOUS}
                     </p>
-                    <p className="text-sm">{answer}</p>
+                    <p className="text-sm text-gray-700">{answer}</p>
                   </div>
                 </div>
                 {userEmail === email ? (
