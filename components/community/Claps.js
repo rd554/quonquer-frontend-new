@@ -4,6 +4,8 @@ import _ from "lodash";
 import claps from "../../public/svg/thumb-up.svg";
 import { getCookie } from "../../actions/auth";
 
+
+
 export function Claps({ clapsNumbers = 0, questionId }) {
   const [clapStyle, setClapStyle] = useState("clap-container");
   const [clickerStyle, setClickerStyle] = useState("click-counter");
@@ -21,7 +23,7 @@ export function Claps({ clapsNumbers = 0, questionId }) {
     }, 700);
 
 
-
+    
     postClaps(questionId, countNumber, token).then((res) => {
       if (res.error) {
         console.log(res.error);
@@ -30,6 +32,8 @@ export function Claps({ clapsNumbers = 0, questionId }) {
       }
     });
   };
+
+
 
 
   return (

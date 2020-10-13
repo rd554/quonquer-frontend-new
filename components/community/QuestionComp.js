@@ -102,7 +102,7 @@ text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline 
           <div>
             <div className="flex text-bold items-center px-3 w-full pr-4 pl-4 my-4">
               <img src={user} alt="user" className="h-8 w-8" />
-              <p className="ml-3">Ravi</p>
+              <p className="ml-3">User</p>
               <button className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"></button>
             </div>
             <div className="mx-3 shadow-md">
@@ -132,7 +132,9 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal"
               </select>
             </div>
             <div className="text-gray-700 p-4 very-small">
-              * While posting double-check spelling and grammar.
+              <p>* While posting double-check spelling and grammar.</p>
+              <p>* Keep questions limited to Mental Health community.</p>
+              <p>* Choose Public to show name and Anonymous to hide.</p>
             </div>
           </div>
         </form>

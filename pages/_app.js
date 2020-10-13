@@ -5,12 +5,12 @@ import "../node_modules/react-quill/dist/quill.snow.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>Quonquer</title>
       </Head>
       <Component {...pageProps} />
-    </>
+    </React.Fragment>
   );
 }
 

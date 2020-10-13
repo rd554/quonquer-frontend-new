@@ -72,7 +72,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
         </div>
       </div>
       <div className="py-6 text-blue-900">
-        <div className="text-xl mb-2 px-4 text-gray-700">{question}</div>
+        <div className="text-lg mb-2 px-4 text-gray-700">{question}</div>
         <div className="bg-gray-200 app-line-height w-full"></div>
       </div>
       <div className="flex max-w-5xl w-full self-center home-menu-login-text mb-6 justify-center">
