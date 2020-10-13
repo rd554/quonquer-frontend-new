@@ -35,14 +35,14 @@ export const getStaticProps = async (context) => {
   }
 };
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { } } // See the "paths" section below
-    ],
-    fallback: true 
-  };
-}
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { } } // See the "paths" section below
+//     ],
+//     fallback: true 
+//   };
+// }
 
 // <div className="mt-8">
         // <LatestBlogs latestBlogs={latestBlogs}/>
