@@ -63,7 +63,7 @@ const ProfileUpdate = () => {
     setValues({
       ...values,
       [name]: value,
-      userFormData,
+      userData: userFormData,
       error: false,
       success: false,
     });
@@ -75,7 +75,7 @@ const ProfileUpdate = () => {
     update(token, userData).then((res) => {
       if (res.error) {
         setValues({
-          ...value,
+          ...values,
           error: res.error,
           success: false,
           loading: false,
@@ -88,6 +88,7 @@ const ProfileUpdate = () => {
             name: res.name,
             email: res.email,
             about: res.about,
+            password: '',
             success: true,
             loading: false,
           });
@@ -149,13 +150,13 @@ const ProfileUpdate = () => {
           <input
             onChange={handleChange("password")}
             value={password}
-            type="text"
+            type="password"
             className="text-gray-700 mt-1 text-left focus:outline-none focus:shadow-outline transition shadow-md rounded w-64 px-2 py-2"
           />
         </div>
         <div className="text-center mb-16">
           <button
-            type="button"
+            type="submit"
             className="inline-block dark-blue
           text-white px-5 py-3 mt-8 uppercase tracking-wider
           text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-lg shadow-md"

@@ -40,6 +40,14 @@ const Category = ({ category, blogs, query }) => {
     </Head>;
   };
 
+  const showCategoryBlogs = () => {
+    return blogs.map((blog, i) => (
+      <article key={i}>
+        <Card blog={blog} />
+      </article>
+    ));
+  };
+
   return (
     <React.Fragment>
       {head()}
@@ -48,9 +56,7 @@ const Category = ({ category, blogs, query }) => {
           <div>
             <header>
               <div>{category.name}</div>
-              {blogs.map((b, i) => (
-                <Card key={i} blog={b} />
-              ))}
+              {showCategoryBlogs()}
             </header>
           </div>
         </main>

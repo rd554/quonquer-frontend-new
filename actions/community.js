@@ -239,7 +239,7 @@ export const getSingleAnswer = async (answerId) => {
 
 export const postClaps = async (questionId, clapsNumber, token) => {
   try {
-    const response = await fetch(`${API}/api/claps/postClapsForUser`, {
+    const response = await fetch(`${API}/api/community/postClapsForUser`, {
       method: "POST",
       headers: {
         Accept: "application/json",

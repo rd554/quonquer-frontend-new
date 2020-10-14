@@ -5,7 +5,6 @@ import claps from "../../public/svg/thumb-up.svg";
 import { getCookie } from "../../actions/auth";
 
 
-
 export function Claps({ clapsNumbers = 0, questionId }) {
   const [clapStyle, setClapStyle] = useState("clap-container");
   const [clickerStyle, setClickerStyle] = useState("click-counter");

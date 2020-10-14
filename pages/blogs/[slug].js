@@ -7,11 +7,6 @@ import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
 import { singleBlog, listRelated } from "../../actions/blog";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-import fb from "../../public/images/facebook.png";
-import insta from "../../public/images/instagram.png";
-import tw from "../../public/images/twitter.png";
-import li from "../../public/images/linkedin.png";
-import wa from "../../public/images/whatsapp.png";
 import DisqusThread from "../../components/DisqusThread";
 
 
