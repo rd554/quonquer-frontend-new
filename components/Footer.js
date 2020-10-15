@@ -26,11 +26,7 @@ const Footer = () => {
                 <li className="w-24 m-auto">Blogs</li>
               </a>
             </Link>
-            <Link href="/sitemap">
-              <a>
-                <li className="w-24 m-auto">Sitemap</li>
-              </a>
-            </Link>
+            
             {isAuth() && (
               
               <a>

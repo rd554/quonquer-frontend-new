@@ -55,7 +55,8 @@ const Category = ({ category, blogs, query }) => {
         <main>
           <div>
             <header>
-              <div>{category.name}</div>
+              <div className="rounded shadow-md bg-gray-100 ml-3 mr-3 hor-list-nobar overflow-x-auto whitespace-no-wrap py-3 px-2">
+              <div className="cursor-pointer rounded-full categories text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">{category.name}</div></div>
               {showCategoryBlogs()}
             </header>
           </div>

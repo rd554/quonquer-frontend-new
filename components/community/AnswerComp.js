@@ -113,7 +113,9 @@ block appearance-none leading-normal rounded text-lg overlay-box reveal"
               </select>
             </div>
             <div className="text-gray-700 p-4 very-small">
-              * While posting double-check spelling and grammar.
+              <p>* While posting double-check spelling and grammar.</p>
+              <p>* Keep answers limited to respective question.</p>
+              <p>* Choose Public to show name and Anonymous to hide.</p>
             </div>
           </div>
         </form>

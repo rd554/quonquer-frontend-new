@@ -37,6 +37,14 @@ const Tag = ({ tag, blogs, query }) => {
     </Head>;
   };
 
+  const showTagBlogs = () => {
+    return blogs.map((blog, i) => (
+      <article key={i}>
+        <Card blog={blog} />
+      </article>
+    ));
+  };
+
   return (
     <React.Fragment>
       {head()}
@@ -44,10 +52,10 @@ const Tag = ({ tag, blogs, query }) => {
         <main>
           <div>
             <header>
-              <div>{tag.name}</div>
-              {blogs.map((b, i) => (
-                <Card key={i} blog={b} />
-              ))}
+              <div className="rounded shadow-md bg-gray-100 ml-3 mr-3 hor-list-nobar overflow-x-auto whitespace-no-wrap py-3 px-2">
+              <div className="cursor-pointer rounded-full tags text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">{tag.name}</div>
+              </div>
+              {showTagBlogs()}
             </header>
           </div>
         </main>

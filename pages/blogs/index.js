@@ -134,7 +134,7 @@ const Blogs = ({
       {head()}
       <Layout>
         <main>
-          <div className="text-black pt-6 text-base -px-2 text-center font-black normal-case">
+          <div className="text-black pt-6 text-center font-black text-xl">
             <h2>All blogs</h2>
           </div>
           <section>
