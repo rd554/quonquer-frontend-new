@@ -12,7 +12,7 @@ const CreateQuestion = ({ currentUserName, currentUserPhoto }) => {
     <React.Fragment>
       <div className="mx-4 my-6 mt-16 rounded-lg shadow-lg">
         <div className="flex text-bold items-center px-3 w-full pr-4 pl-4 my-4">
-          <img src={user} alt="user" className="h-6 w-6" />
+          <img src={currentUserPhoto} alt="user" className="rounded-full h-6 w-6" />
           <p className="ml-1 font-medium">
             {currentUserName.length ? currentUserName : "Hello User"}
           </p>

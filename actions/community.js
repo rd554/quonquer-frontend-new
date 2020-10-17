@@ -53,22 +53,21 @@ export const createAnswer = async (
   }
 };
 
-export const listAllCards = async (pageNo = 1) => {
+export const listAllCards = async (pageNo = 1, token) => {
   try {
     const d = {
-      pageNo
+      pageNo,
+      token
     };
     const response = await fetch(`${API}/api/community-questions-answers`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(d),
     });
     let data = await response.json();
-
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);

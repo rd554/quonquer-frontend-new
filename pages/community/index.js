@@ -10,6 +10,8 @@ import ans from "../../public/images/ans_icon.png";
 import share from "../../public/images/001-share.png";
 import { withRouter } from "next/router";
 import { getCookie } from "../../actions/auth";
+import { getProfile } from "../../actions/user";
+const token = getCookie("token");
 
 const Community = ({
   questions,
@@ -23,21 +25,43 @@ const Community = ({
   const [currentUserName, setCurrentUserName] = useState("");
   const [currentUserPhoto, setCurrentUserPhoto] = useState("");
   const [isLoadMoreLoading, setLoadMoreLoading] = useState(false);
-  // const userEmail = localStorage.getItem("user")?.email || "";
+
+  const token = getCookie("token");
+
+  const init = () => {
+    getProfile(token).then((res) => {
+      if (res.error) {
+        console.log('res.error', res.error)
+      } else {
+        setCurrentUserName(res.name)
+        setCurrentUserPhoto(res.photo)
+        setCurrentUserEmail(res.email)
+      }
+    });
+  };
 
   useEffect(() => {
-    if (user && JSON.parse(user).email) {
-      setCurrentUserEmail(JSON.parse(user).email);
-      setCurrentUserName(JSON.parse(user).name);
-      setCurrentUserPhoto(JSON.parse(user).photo);
-    }
-  }, [currentUserEmail, currentUserName, currentUserPhoto]);
+    init();
+  }, []);
+
+
+  // useEffect(() => {
+  //   if (user && JSON.parse(user).email) {
+  //     console.log('JSON.parse(user)', JSON.parse(user))
+  //     setCurrentUserEmail(JSON.parse(user).email);
+  //     setCurrentUserName(JSON.parse(user).name);
+  //     setCurrentUserPhoto(JSON.parse(user).photo);
+  //   }
+
+  //   console.log('currentUserPhoto', currentUserPhoto)
+  // }, [currentUserEmail, currentUserName, currentUserPhoto]);
 
   const user = getCookie("user");
 
   const loadMore = async () => {
     setLoadMoreLoading(true)
-    const res = await listAllCards(pageNo);
+    const token = getCookie("token");
+    const res = await listAllCards(pageNo, token);
       if (res.error) {
         console.log(res.error);
       } else {
@@ -140,7 +164,8 @@ const Community = ({
 // <div>{showAllQuestions()}</div>
 
 Community.getInitialProps = async () => {
-  const res = await listAllCards();
+  const res = await listAllCards(1,token);
+  console.log('res', res)
   if (res.error) {
     console.log(res.error);
   } else {

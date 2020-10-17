@@ -41,10 +41,11 @@ export const getProfile = async (token) => {
 export const update = async (user, token) => {
   try {
     console.log(user);
+    // /user/update
     const response = await fetch(`${API}/api/user/update`, {
-      method: "PUT",
+      method: "POST",
       headers: {
-        Accept: "application/json",
+        // Accept: "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
       body: user,

@@ -46,6 +46,7 @@ const ProfileUpdate = () => {
           name: res.name,
           email: res.email,
           about: res.about,
+          photo : res.photo,
         });
       }
     });
@@ -72,7 +73,22 @@ const ProfileUpdate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, loading: true });
-    update(token, userData).then((res) => {
+
+
+    let userFormData = new FormData();
+
+    Object.keys(values).forEach((key => {
+      if(values[key] && (values[key].length || typeof values[key] === 'object')){
+        userFormData.append(key , values[key])
+      }
+    }))
+
+    userFormData.append('hello' , 'all')
+    for(var pair of userFormData.entries()) {
+      console.log(pair[0]+', '+pair[1]);
+    }
+
+    update(userFormData, token).then((res) => {
       if (res.error) {
         setValues({
           ...values,
@@ -175,7 +191,7 @@ const ProfileUpdate = () => {
     
       <div>
       <div>
-      <img src={user} className="items-center mx-auto pt-6" alt="profile picture" />
+      {photo.length > 0  ? <img src={photo} className="items-center mx-auto  h-16 w-16 rounded-full shadow-md object-cover" alt="profile picture" /> : null}
       </div>
         <div>{ProfileUpdateForm()}</div>
       </div>
