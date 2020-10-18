@@ -191,7 +191,7 @@ const ProfileUpdate = () => {
     
       <div>
       <div>
-      {photo.length > 0  ? <img src={photo} className="items-center mx-auto  h-16 w-16 rounded-full shadow-md object-cover" alt="profile picture" /> : null}
+      {photo.length > 0  ? <img src={photo} className="items-center mx-auto h-16 w-16 rounded-full shadow-md object-cover mt-16" alt="profile picture" /> : null}
       </div>
         <div>{ProfileUpdateForm()}</div>
       </div>

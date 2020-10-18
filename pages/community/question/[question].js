@@ -5,7 +5,8 @@ import { getSingleQuestion } from "../../../actions/community";
 const Question = ({ questionObj, isForUpdate }) => {
   return (
     <React.Fragment>
-      <QuestionComp questionObj={questionObj} isForUpdate={isForUpdate} />
+      <QuestionComp questionObj={questionObj} isForUpdate={isForUpdate} currentUserName={currentUserName}
+      currentUserPhoto={currentUserPhoto} />
     </React.Fragment>
   );
 };

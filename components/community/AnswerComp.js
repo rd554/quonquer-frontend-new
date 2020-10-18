@@ -8,7 +8,7 @@ import back from "../../public/back.png";
 import user from "../../public/images/001-user.png";
 import { PUBLIC, ANONYMOUS } from "../../helpers/constants";
 
-const AnswerComp = ({ isForAnswerUpdate, answerObj, answerId, questionId }) => {
+const AnswerComp = ({ isForAnswerUpdate, answerObj, answerId, questionId, currentUserName, currentUserPhoto }) => {
   const router = useRouter();
   const [values, setValues] = useState({
     answer: answerObj && answerObj.answer ? answerObj.answer : "",
