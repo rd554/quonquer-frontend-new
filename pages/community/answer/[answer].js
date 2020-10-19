@@ -13,8 +13,8 @@ const Answer = ({ answerObj, isForAnswerUpdate, answerId, questionId }) => {
         answerObj={answerObj}
         answerId={answerId}
         questionId={questionId}
-        currentUserName={currentUserName}
-      currentUserPhoto={currentUserPhoto}
+      //   currentUserName={currentUserName}
+      // currentUserPhoto={currentUserPhoto}
       />
     </React.Fragment>
   );
