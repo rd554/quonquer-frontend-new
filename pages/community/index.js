@@ -26,6 +26,12 @@ const Community = ({
   const [currentUserPhoto, setCurrentUserPhoto] = useState("");
   const [isLoadMoreLoading, setLoadMoreLoading] = useState(false);
 
+
+
+
+
+  
+
   const token = getCookie("token");
 
   const init = () => {
