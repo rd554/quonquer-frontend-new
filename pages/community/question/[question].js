@@ -11,18 +11,30 @@ const Question = ({ questionObj, isForUpdate }) => {
   );
 };
 
-Question.getInitialProps = async ({ query }) => {
+export async function getServerSideProps({ query }) {
   console.log("query.question", query.question);
 
   if (query.question) {
     const res = await getSingleQuestion(query.question);
     if (res.error) {
       console.log(res.error);
-      return { isForUpdate: false };
+      return { 
+        props: {
+          isForUpdate: false
+        }
+         };
     }
-    return { questionObj: res, isForUpdate: true };
+    return { 
+      props: {
+        questionObj: res, isForUpdate: true
+      }
+       };
   } else {
-    return { isForUpdate: false };
+    return { 
+      props: {
+        isForUpdate: false
+      }
+       };
   }
 };
 

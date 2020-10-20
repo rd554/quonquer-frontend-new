@@ -16,8 +16,8 @@ const Answer = () => {
         console.log('res.error', res.error)
       } else {
         setCurrentUserName(res.name)
-        // setCurrentUserPhoto(res.photo)
-        // setCurrentUserEmail(res.email)
+        setCurrentUserPhoto(res.photo)
+        setCurrentUserEmail(res.email)
       }
     });
   };

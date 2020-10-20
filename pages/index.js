@@ -26,7 +26,7 @@ const Home = ({ latestBlogs }) => {
   );
 };
 
-export const getStaticProps = async (context) => {
+export async function getServerSideProps() {
   const res = await blogForHomePage()
   return {
     props: {
@@ -40,7 +40,7 @@ export const getStaticProps = async (context) => {
 //     paths: [
 //       { params: { } } // See the "paths" section below
 //     ],
-//     fallback: true 
+//     fallback: true
 //   };
 // }
 

@@ -180,10 +180,12 @@ body.modal-active {
 
 .categories {
   background-color: #49ab9e;
+  width: fit-content;
 }
 
 .tags {
   background-color: #f1863b;
+  width: fit-content;
 }
 
 .dark-blue {

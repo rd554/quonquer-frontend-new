@@ -162,7 +162,7 @@ const Blogs = ({
   );
 };
 
-Blogs.getInitialProps = async () => {
+export async function getServerSideProps() {
   let skip = 0;
   let limit = 4;
   const res = await listBlogsWithCategoriesAndTags(skip, limit);
@@ -170,12 +170,15 @@ Blogs.getInitialProps = async () => {
     console.log(res.error);
   } else {
     return {
-      blogs: res.blogs,
+      props: {
+        blogs: res.blogs,
       categories: res.categories,
       tags: res.tags,
       totalBlogs: res.size,
       blogsLimit: limit,
       blogSkip: skip,
+      }
+      
     };
   }
 };

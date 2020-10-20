@@ -187,12 +187,17 @@ const SingleBlog = ({ blog, query }) => {
   );
 };
 
-SingleBlog.getInitialProps = async ({ query }) => {
+export async function getServerSideProps({ query }) {
   const res = await singleBlog(query.slug);
   if (res.error) {
     console.log(res.error);
   } else {
-    return { blog: res, query };
+    return { 
+      props: {
+        blog: res, query
+      }
+      
+       };
   }
 };
 

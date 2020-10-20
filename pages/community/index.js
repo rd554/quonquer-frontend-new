@@ -37,7 +37,10 @@ const Community = ({
         setCurrentUserPhoto(res.photo)
         setCurrentUserEmail(res.email)
       }
-    });
+    }).catch((err) => {
+      console.log('err.message', err.message)
+    })
+    ;
   };
 
   useEffect(() => {
@@ -163,15 +166,18 @@ const Community = ({
 
 // <div>{showAllQuestions()}</div>
 
-Community.getInitialProps = async () => {
+export async function getServerSideProps() {
   const res = await listAllCards(1,token);
   console.log('res', res)
   if (res.error) {
     console.log(res.error);
   } else {
     return {
-      questions: res.questions,
-      totalQuestions: res.size,
+      props: {
+        questions: res.questions,
+        totalQuestions: res.size,
+      }
+      
     };
   }
 };

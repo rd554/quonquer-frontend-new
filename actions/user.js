@@ -33,8 +33,13 @@ export const getProfile = async (token) => {
     console.log(data);
     return data;
   } catch (err) {
-    console.log(err);
-    return err;
+    return {
+      "photo": "",
+      "name": "Hello User",
+      "email": "dravi9395@gmail.com",
+      "profile": "",
+      "username": "",
+    };
   }
 };
 

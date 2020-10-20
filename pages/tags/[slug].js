@@ -52,7 +52,7 @@ const Tag = ({ tag, blogs, query }) => {
         <main>
           <div>
             <header>
-              <div className="rounded shadow-md bg-gray-100 ml-3 mr-3 hor-list-nobar overflow-x-auto whitespace-no-wrap py-3 px-2">
+              <div className="rounded ml-3 mr-3 hor-list-nobar overflow-x-auto whitespace-no-wrap py-3 px-2">
               <div className="cursor-pointer rounded-full tags text-white font-extrabold hover:bg-gray-500 text-sm focus:outline-none focus:shadow-outline transition mt-1 ml-2 px-2">{tag.name}</div>
               </div>
               {showTagBlogs()}
@@ -64,12 +64,16 @@ const Tag = ({ tag, blogs, query }) => {
   );
 };
 
-Tag.getInitialProps = ({ query }) => {
+export async function getServerSideProps({ query }) {
   return singleTag(query.slug).then((res) => {
     if (res.err) {
       console.log(res.error);
     } else {
-      return { tag: res.tag, blogs: res.blogs, query };
+      return { 
+        props: {
+          tag: res.tag, blogs: res.blogs, query
+        }
+         };
     }
   });
 };
