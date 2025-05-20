@@ -1,3 +1,4 @@
+import React from "react";
 import AnswerComp from "../../../components/community/AnswerComp";
 import { getCookie } from '../../../actions/auth'
 import { getProfile } from "../../../actions/user";
