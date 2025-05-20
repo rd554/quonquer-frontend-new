@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { isAuth, getCookie } from "../../actions/auth";
 import { create, getCategories } from "../../actions/category";
