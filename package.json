@@ -8,7 +8,7 @@
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run dev-css\"",
     "next-build": "next build",
-    "build": "concurrently \"npm run next-build\" \"npm run build-css\"",
+    "build": "npm run build-css && npm run next-build",
     "start": "next start"
   },
   "dependencies": {
