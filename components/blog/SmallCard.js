@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import {smartTrim} from '../../helpers/title'
 import parse from 'html-react-parser';
