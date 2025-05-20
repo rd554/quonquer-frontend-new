@@ -1,8 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import { signup, preSignup } from "../../actions/auth";
 import Link from "next/link";
-import back from "../../public/back.png";
-import logo from "../../public/app_img.jpg";
+import Router from "next/router";
 
 const SignupComponent = () => {
   const [values, setValues] = useState({
@@ -83,12 +83,14 @@ const SignupComponent = () => {
   const signupForm = () => {
     return (
       <div>
-        <Link href="/">
-          <img src={back} alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
+        <Link href="/" legacyBehavior>
+          <a>
+            <img src="/back.png" alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
+          </a>
         </Link>
         <div className="w-24 content-center mx-auto">
           <img
-            src={logo}
+            src="/f.png"
             className="rounded-full shadow-md border-2 border-white-500"
             alt="quonquer"
           />

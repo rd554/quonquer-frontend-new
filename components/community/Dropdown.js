@@ -60,7 +60,7 @@ export function Dropdown({ questionId, notifyParentQuestionList }) {
 
   const showUpdateButton = (questionId) => {
     return (
-      <Link href={`/community/question/${questionId}`}>
+      <Link href={`/community/question/${questionId}`} legacyBehavior>
         <a
           rel="noopener noreferrer"
           className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"

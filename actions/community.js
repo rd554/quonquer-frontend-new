@@ -1,5 +1,6 @@
 import fetch from "isomorphic-fetch";
 import { API } from "../config";
+import React from "react";
 
 export const createQuestion = async (question, token, selectedScope) => {
   try {
@@ -59,7 +60,7 @@ export const listAllCards = async (pageNo = 1, token) => {
       pageNo,
       token
     };
-    const response = await fetch(`${API}/api/community-questions-answers`, {
+    const response = await fetch(`${API}/community-questions-answers`, {
       method: "POST",
       headers: {
         Accept: "application/json",

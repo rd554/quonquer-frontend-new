@@ -16,7 +16,7 @@ const AdminIndex = () => {
                 <thead>
                   <tr className="bg-white">
                     <td className="border shadow-md text-center text-blue-400 text-md px-8 py-2">
-                      <Link href="/admin/crud/category-tag">
+                      <Link href="/admin/crud/category-tag" legacyBehavior>
                         <a>Create Category</a>
                       </Link>
                     </td>
@@ -29,7 +29,7 @@ const AdminIndex = () => {
                 <thead>
                   <tr>
                     <td className="border shadow-md text-center text-blue-400 text-md px-8 py-2">
-                      <Link href="/admin/crud/category-tag">
+                      <Link href="/admin/crud/category-tag" legacyBehavior>
                         <a>Create Tag</a>
                       </Link>
                     </td>
@@ -42,7 +42,7 @@ const AdminIndex = () => {
                 <thead>
                   <tr>
                     <td className="border shadow-md text-center text-blue-400 text-md px-8 py-2">
-                      <Link href="/admin/crud/blog">
+                      <Link href="/admin/crud/blog" legacyBehavior>
                         <a>Create Blog</a>
                       </Link>
                     </td>
@@ -55,7 +55,7 @@ const AdminIndex = () => {
                 <thead>
                   <tr>
                     <td className="border shadow-md text-center text-blue-400 text-md px-8 py-2">
-                      <Link href="/admin/crud/blogs">
+                      <Link href="/admin/crud/blogs" legacyBehavior>
                         <a>Update/Delete Blog</a>
                       </Link>
                     </td>

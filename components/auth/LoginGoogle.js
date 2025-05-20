@@ -7,7 +7,7 @@ import { GOOGLE_CLIENT_ID } from "../../config";
 
 const LoginGoogle = () => {
   const responseGoogle = (response) => {
-    // console.log(response);
+    console.log('Google response:', response); // Debug log
     const tokenId = response.tokenId;
     const user = { tokenId };
 

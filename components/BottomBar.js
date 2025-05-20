@@ -19,7 +19,7 @@ const BottomBar = () => {
     <div>
       <section className="fixed bg-white h-12 w-full bottom-0 flex justify-between px-4 shadow-inner z-20">
         <div className="w-8 cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1">
-          <Link href="/">
+          <Link href="/" legacyBehavior>
             <a>
               <div className="">
                 <img src={Home} alt="Quonquer" />
@@ -31,7 +31,7 @@ const BottomBar = () => {
           </Link>
         </div>
         <div className="w-8 content-center cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1">
-          <Link href="blogs/search">
+          <Link href="blogs/search" legacyBehavior>
             <a>
               <div className="ml-3">
                 <img src={search} alt="Quonquer Search" />
@@ -43,7 +43,7 @@ const BottomBar = () => {
           </Link>
         </div>
         <div className="rounded-full w-20 h-12 ml-auto mr-auto flex justify-center app-logo-center shadow-outer focus:outline-none focus:shadow-outline transition mt-1">
-          <Link href="/menu">
+          <Link href="/menu" legacyBehavior>
             <a>
               <div className="pt-2">
                 <img src={Menu} alt="Quonquer Menu" />
@@ -52,7 +52,7 @@ const BottomBar = () => {
           </Link>
         </div>
         <div className="w-8 content-center cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1">
-          <Link href="/community">
+          <Link href="/community" legacyBehavior>
             <a>
               <div className="">
                 <img src={Community} alt="Quonquer Community" />

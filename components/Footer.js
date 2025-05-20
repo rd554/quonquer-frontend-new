@@ -1,12 +1,7 @@
+import React from "react";
 import Link from "next/link";
 import {signout, isAuth} from '../actions/auth'
 import Router from 'next/router'
-import logo from "../public/app_img.jpg";
-import facebook from "../public/images/facebook.png";
-import instagram from "../public/images/instagram.png";
-import twitter from "../public/images/twitter.png";
-import linkedin from "../public/images/linkedin.png";
-
 
 const Footer = () => {
   
@@ -16,23 +11,21 @@ const Footer = () => {
       <div className="flex mt-4 max-w-2xl m-auto">
         <div className="w-1/2 text-white">
           <ul>
-            <Link href="/community">
-              <a>
-                <li className="w-24 m-auto">Community</li>
-              </a>
+            <li className="w-24 m-auto">
+              <Link href="/community" legacyBehavior>
+                <a>Community</a>
             </Link>
-            <Link href="/blogs">
-              <a>
-                <li className="w-24 m-auto">Blogs</li>
-              </a>
+            </li>
+            <li className="w-24 m-auto">
+              <Link href="/blogs" legacyBehavior>
+                <a>Blogs</a>
             </Link>
+            </li>
             
             {isAuth() && (
-              
-              <a>
-                <li className="w-24 m-auto" onClick={() => signout(() => Router.replace(`/signin`))}>Sign out</li>
-              </a>
-            
+              <li className="w-24 m-auto">
+                <a onClick={() => signout(() => Router.replace(`/signin`))}>Sign out</a>
+              </li>
             )}
           </ul>
         </div>
@@ -45,16 +38,16 @@ const Footer = () => {
           </ul>
           <div className="flex mt-3">
             <a href="https://www.instagram.com/quonquer.mentalhealth">
-              <img src={instagram} className="w-8 h-8 ml-8" alt="instagram" />
+              <img src="/images/instagram.png" className="w-8 h-8 ml-8" alt="instagram" />
             </a>
             <a href="https://www.facebook.com/Quonquer-878341932526317/">
-              <img src={facebook} className="w-8 h-8 ml-3" alt="facebook" />
+              <img src="/images/facebook.png" className="w-8 h-8 ml-3" alt="facebook" />
             </a>
             <a href="https://twitter.com/quonquer1">
-              <img src={twitter} className="w-8 h-8 ml-3" alt="twitter" />
+              <img src="/images/twitter.png" className="w-8 h-8 ml-3" alt="twitter" />
             </a>
             <a href="https://www.linkedin.com/company/quonquer1">
-              <img src={linkedin} className="w-8 h-8 ml-3" alt="linkedin" />
+              <img src="/images/linkedin.png" className="w-8 h-8 ml-3" alt="linkedin" />
             </a>
           </div>
         </div>
@@ -63,9 +56,9 @@ const Footer = () => {
       <div className="flex justify-center">
         <div className="w-8 h-8 mr-2">
           <img
-            src={logo}
+            src="/f.png"
             className="rounded-full shadow-md mt-8"
-            alt="asdasd"
+            alt="Quonquer"
           />
         </div>
 
@@ -82,13 +75,13 @@ const Footer = () => {
           </p>
         </div>
         <div className="mt-3">
-          <Link href="/about">
+          <Link href="/about" legacyBehavior>
             <a className="text-white text-xs">&nbsp;About me&nbsp;-</a>
           </Link>
         </div>
 
         <div className="mt-3">
-          <Link href="/about">
+          <Link href="/about" legacyBehavior>
             <a className="text-white text-xs">&nbsp;Work with us</a>
           </Link>
         </div>

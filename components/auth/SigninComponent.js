@@ -1,8 +1,7 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { signin, authenticate, isAuth } from "../../actions/auth";
 import Link from "next/link";
-import back from "../../public/back.png";
-import logo from "../../public/app_img.jpg";
 import Router from "next/router";
 import LoginGoogle from "./LoginGoogle";
 import { useRouter } from "next/router";
@@ -96,14 +95,14 @@ const LoginComponent = () => {
       <div>
         <img
           onClick={() => handleBack()}
-          src={back}
+          src="/back.png"
           alt="back"
           className="w-6 h-6 mr-3 mt-4 ml-1"
         ></img>
 
         <div className="w-24 content-center mx-auto">
           <img
-            src={logo}
+            src="/f.png"
             className="rounded-full shadow-md border-2 border-white-500"
             alt="quonquer"
           />
@@ -153,13 +152,13 @@ const LoginComponent = () => {
               <p>
                 New User? &nbsp;
                 <span>
-                  <Link href="/signup">
+                  <Link href="/signup" legacyBehavior>
                     <a className="text-blue-500">Signup</a>
                   </Link>
                 </span>
               </p>
             </div>
-            <Link href="/auth/password/forgot">
+            <Link href="/auth/password/forgot" legacyBehavior>
               <a>
                 <p className="flex-1 text-blue-500 text-xs">Forgot Password?</p>
               </a>

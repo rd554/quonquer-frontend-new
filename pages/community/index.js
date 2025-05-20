@@ -1,13 +1,12 @@
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { listAllCards } from "../../actions/community";
 import { useState, useEffect } from "react";
 import QuestionCard from "../../components/community/QuestionCard";
 import CreateQuestion from "../../components/community/CreateQuestion";
 import Layout from "../../components/Layout";
-import clap from "../../public/images/clap.png";
-import ans from "../../public/images/ans_icon.png";
-import share from "../../public/images/001-share.png";
 import { withRouter } from "next/router";
 import { getCookie } from "../../actions/auth";
 import { getProfile } from "../../actions/user";

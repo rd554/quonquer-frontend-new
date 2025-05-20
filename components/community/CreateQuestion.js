@@ -1,10 +1,16 @@
-import user from "../../public/images/001-user.png";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { getCookie } from "../../actions/auth";
 import { useRouter } from "next/router";
 
 const CreateQuestion = ({ currentUserName, currentUserPhoto }) => {
-  const token = getCookie("token");
+  const [token, setToken] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    setToken(getCookie("token"));
+  }, []);
+
   const handleCreateQuestionClick = () => {
     router.push(token ? "/community/question" : "/signin");
   };
@@ -12,7 +18,7 @@ const CreateQuestion = ({ currentUserName, currentUserPhoto }) => {
     <React.Fragment>
       <div className="mx-4 my-6 mt-16 rounded-lg shadow-lg">
         <div className="flex text-bold items-center px-3 w-full pr-4 pl-4 my-4">
-          <img src={currentUserPhoto?.length === 0 ? user : currentUserPhoto} alt="user" className="rounded-full h-6 w-6" />
+          <Image src={currentUserPhoto?.length === 0 ? "/images/001-user.png" : currentUserPhoto} alt="user" width={24} height={24} className="rounded-full" />
           <p className="ml-1 font-medium">
             {currentUserName.length === 0 ? "Hello User" : currentUserName}
           </p>

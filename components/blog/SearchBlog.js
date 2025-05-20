@@ -1,5 +1,5 @@
+import React from "react";
 import Link from "next/link";
-import back from "../../public/back.png";
 import renderHTML from "react-render-html";
 import { useState, useEffect } from "react";
 import { listSearch } from "../../actions/blog";
@@ -54,7 +54,7 @@ const SearchBlog = () => {
         {results.map((blog, i) => {
           return (
             <div key={i}>
-              <Link href={`/blogs/${blog.slug}`}>
+              <Link href={`/blogs/${blog.slug}`} legacyBehavior>
                 <a className="text-blue-500 text-xl">{blog.title}</a>
               </Link>
             </div>
@@ -73,12 +73,14 @@ const SearchBlog = () => {
       <React.Fragment>
         <div>
           <div className="flex w-full flex-wrap content-center pr-3 mt-4">
-            <Link href="/">
+            <Link href="/" legacyBehavior>
+              <a>
               <img
-                src={back}
+                  src="/back.png"
                 alt="back"
                 className="w-6 h-6 mr-3 mt-4 ml-1"
               ></img>
+              </a>
             </Link>
             <div className="text-center shadow rounded-lg flex flex-1 h-12 mt-2">
               <input

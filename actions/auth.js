@@ -162,8 +162,6 @@ export const updateUser = (user, next) => {
   }
 }
 
-
-
 export const forgotPassword = async (email) => {
   try {
     console.log(email);
@@ -207,7 +205,7 @@ export const resetPassword = async (resetInfo) => {
 export const loginWithGoogle = async (user) => {
   try {
     console.log(user);
-    const response = await fetch(`${API}/api/google-login`, {
+    const response = await fetch(`${API}/google-login`, {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -2,7 +2,6 @@ import { useState } from "react";
 import Layout from "../../../components/Layout";
 import { forgotPassword } from "../../../actions/auth";
 import Link from "next/link";
-import back from "../../../public/back.png";
 
 const ForgotPassword = () => {
   const [values, setValues] = useState({
@@ -95,8 +94,10 @@ const ForgotPassword = () => {
   return (
     <Layout>
       <div>
-        <Link href="/signin">
-          <img src={back} alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
+        <Link href="/signin" legacyBehavior>
+          <a>
+            <img src="/back.png" alt="back" className="w-6 h-6 mr-3 mt-4 ml-1"></img>
+          </a>
         </Link>
         <div>
           {showError()}

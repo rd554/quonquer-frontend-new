@@ -1,6 +1,6 @@
+import React from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import user from "../../public/images/001-user.png";
 import foundr from '../../public/svg/user.svg'
 import Router from "next/router";
 import {API} from '../../config'
@@ -191,7 +191,11 @@ const ProfileUpdate = () => {
     
       <div>
       <div>
-      {photo.length > 0  ? <img src={photo} className="items-center mx-auto h-16 w-16 rounded-full shadow-md object-cover mt-16" alt="profile picture" /> : null}
+      {photo.length > 0  ? (
+        <img src={photo} className="items-center mx-auto h-16 w-16 rounded-full shadow-md object-cover mt-16" alt="profile picture" />
+      ) : (
+        <img src="/images/001-user.png" className="items-center mx-auto h-16 w-16 rounded-full shadow-md object-cover mt-16" alt="default profile" />
+      )}
       </div>
         <div>{ProfileUpdateForm()}</div>
       </div>

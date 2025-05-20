@@ -1,16 +1,15 @@
-import ReactPlayer from "react-player";
+import React from 'react';
 import Layout from "../components/Layout";
-import { blogForHomePage } from "../actions/blog";
-import smallCard from "../components/blog/SmallCard";
-import LatestBlogs from '../components/LatestBlogs'
+import ReactPlayer from "react-player";
+import LatestBlogs from '../components/LatestBlogs';
 
-const Home = ({ latestBlogs }) => {
+const Home = () => {
   return (
     <Layout>
       <div>
         <div className="app-main-bg w-full relative mb-8">
           <ReactPlayer
-            url="https://quonquerbucket.s3.ap-south-1.amazonaws.com/homevideo.mov"
+            url="/Walkcycle_1 MOV.mp4"
             height="100%"
             width="100%"
             playing={true}
@@ -19,53 +18,12 @@ const Home = ({ latestBlogs }) => {
           />
         </div>
         <div className="mt-8">
-        <LatestBlogs latestBlogs={latestBlogs}/>
+          <LatestBlogs latestBlogs={[]} />
         </div>
       </div>
     </Layout>
   );
 };
-
-export async function getServerSideProps() {
-  const res = await blogForHomePage()
-  return {
-    props: {
-      latestBlogs : res
-    },
-  }
-};
-
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { } } // See the "paths" section below
-//     ],
-//     fallback: true
-//   };
-// }
-
-// <div className="mt-8">
-        // <LatestBlogs latestBlogs={latestBlogs}/>
-        // </div>
-
-// export const getStaticProps = async (context) => {
-//   const res = await blogForHomePage()
-//   return {
-//     props: {
-//       latestBlogs : res
-//     },
-//   }
-// };
-
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { } } // See the "paths" section below
-//     ],
-//     fallback: true 
-//   };
-// }
-
 
 export default Home;
 

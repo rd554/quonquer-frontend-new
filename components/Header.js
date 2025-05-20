@@ -1,6 +1,6 @@
+import React from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import logo from "../public/app_img.jpg";
 import { APP_NAME } from "../config";
 import { isAuth } from "../actions/auth";
 
@@ -31,20 +31,15 @@ const Header = () => {
     <div>
       <section className="fixed bg-white h-12 w-full top-0 item-center flex shadow-md justify-between px-4 z-20">
         <div className="sm:w-1/3 h-full flex content-center flex-wrap cursor-pointer">
-          <Link href="/">
-            <a>
+          <Link href="/" legacyBehavior>
+            <a className="flex items-center">
               <div className="w-8 h-8 text-center flex items-center">
                 <img
-                  src={logo}
+                  src="/f.png"
                   className="rounded-full shadow-md"
                   alt="Quonquer"
                 />
               </div>
-            </a>
-          </Link>
-
-          <Link href="/">
-            <a>
               <p className="h-auto text-black pl-2 text-xl app-font-center font-medium">
                 {APP_NAME}
               </p>
@@ -57,13 +52,10 @@ const Header = () => {
         >
           <ul>
             <li>
-              <Link href={headerCTA.href}>
-                <a
-                  className="inline-block dark-blue
+              <Link href={headerCTA.href} legacyBehavior>
+                <a className="inline-block dark-blue
     text-white px-2 py-2 uppercase tracking-wider 
-    text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-lg shadow-md"
-                  href={headerCTA.href}
-                >
+                text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline transition rounded-lg shadow-md">
                   {headerCTA.label}
                 </a>
               </Link>

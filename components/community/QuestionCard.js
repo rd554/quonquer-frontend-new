@@ -1,16 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { getCookie } from "../../actions/auth";
 import { Dropdown } from "./Dropdown";
 import { DropdownAnswer } from "./DropdownAnswer";
 import { Claps } from "./Claps";
 import moment from "moment";
-import clap from "../../public/images/clap.png";
-import ans from "../../public/images/ans_icon.png";
-import share from "../../public/images/001-share.png";
-import hide from "../../public/images/001-close.png";
-import more from "../../public/svg/more.svg";
-import user from "../../public/images/001-user.png";
 import { PUBLIC, ANONYMOUS } from "../../helpers/constants";
 import { useRouter } from "next/router";
 
@@ -63,7 +58,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
         </div>
       </div>
       <div className="flex justify-start items-center px-4">
-        <img src={user} alt="user" className="h-6 w-6" />
+        <Image src="/images/001-user.png" alt="user" width={24} height={24} />
         <p className="ml-1 font-medium">
           {questionScope === PUBLIC ? name : ANONYMOUS}
         </p>
@@ -78,7 +73,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
       <div className="flex max-w-5xl w-full self-center home-menu-login-text mb-6 justify-center">
         <div className="w-1/3 text-black flex-1 text-center ">
           <div className="h-10 w-full flex justify-center px-8 items-center">
-            <img src={clap} alt="thumps up" className="h-5 w-5 mt-1" />
+            <Image src="/images/clap.png" alt="thumps up" width={20} height={20} className="mt-1" />
             <p className="dark-blue-text text-xs mr-20">
               <Claps 
               questionId={_id}
@@ -92,7 +87,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
             onClick={() => handleAnswerBtnClick(createUpdateAnswerProps)}
             className="h-10 w-full flex justify-center px-8 items-center"
           >
-            <img src={ans} alt="answer" className="h-4 w-4 mt-1" />
+            <Image src="/images/ans_icon.png" alt="answer" width={16} height={16} className="mt-1" />
             <p className="text-xs text-white ml-2">Answer</p>
           </div>
         </div>
@@ -102,7 +97,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
               onClick={handleShareClick}
               className="h-10 w-full flex justify-center px-8 items-center"
             >
-              <img src={share} alt="share" className="h-5 w-5 mt-1" />
+              <Image src="/images/001-share.png" alt="share" width={20} height={20} className="mt-1" />
               <p className="dark-blue-text text-sm ml-2 mt-1">Share</p>
             </div>
           </a>
@@ -122,7 +117,7 @@ const QuestionCard = ({ ques, notifyParentQuestionList, userEmail }) => {
               <div key={index} className="flex justify-between p-4">
                 <div className="flex">
                   <div>
-                    <img src={user} alt="user" className="w-6 h-6 mt-1" />
+                    <Image src="/images/001-user.png" alt="user" width={24} height={24} className="mt-1" />
                   </div>
                   <div className="mb-2 ml-2 bg-gray-100 rounded-lg p-1">
                     <p className="font-medium">

@@ -4,7 +4,7 @@ import { API } from "../config";
 // export const userPublicProfile = async (username) => {
 //   try {
 //     console.log(username);
-//     const response = await fetch(`${API}/api/user/${username}`, {
+//     const response = await fetch(`${API}/user/${username}`, {
 //       method: "GET",
 //       headers: {
 //         Accept: "application/json",
@@ -22,7 +22,7 @@ import { API } from "../config";
 export const getProfile = async (token) => {
   try {
     console.log(token);
-    const response = await fetch(`${API}/api/user`, {
+    const response = await fetch(`${API}/user`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -47,7 +47,7 @@ export const update = async (user, token) => {
   try {
     console.log(user);
     // /user/update
-    const response = await fetch(`${API}/api/user/update`, {
+    const response = await fetch(`${API}/user/update`, {
       method: "POST",
       headers: {
         // Accept: "multipart/form-data",

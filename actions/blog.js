@@ -66,12 +66,17 @@ export const blogForHomePage = async () => {
     const response = await fetch(`${API}/api/blogForHomePage`, {
       method: "GET"
     });
-    let data = await response.json();
-    console.log('daa' , data);
-    return data;
+    
+    if (!response.ok) {
+      console.error(`API error: ${response.status} ${response.statusText}`);
+      return [];
+    }
+    
+    const data = await response.json();
+    return Array.isArray(data) ? data : [];
   } catch (err) {
-    console.log(err);
-    return err;
+    console.error("Error fetching blog data:", err);
+    return [];
   }
 };
 

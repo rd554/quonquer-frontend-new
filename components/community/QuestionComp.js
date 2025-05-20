@@ -4,7 +4,6 @@ import Private from "../auth/Private";
 import { useState } from "react";
 import { createQuestion } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
-import back from "../../public/back.png";
 import user from "../../public/images/001-user.png";
 import { PUBLIC, ANONYMOUS } from "../../helpers/constants";
 
@@ -80,9 +79,9 @@ const QuestionComp = ({ questionObj, isForUpdate, currentUserName, currentUserPh
         {/*<Private> */}
         <form onSubmit={clickSubmit}>
           <div className="flex w-full justify-between mt-4">
-            <Link href="/community">
+            <Link href="/community" legacyBehavior>
               <a>
-                <img src={back} alt="back" className="w-6 h-6 ml-2 mt-2" />
+                <img src="/back.png" alt="back" className="w-6 h-6 ml-2 mt-2" />
               </a>
             </Link>
             <div>

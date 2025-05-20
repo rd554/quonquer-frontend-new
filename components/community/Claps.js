@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { postClaps } from "../../actions/community";
+import { useRouter } from "next/router";
 import _ from "lodash";
 import claps from "../../public/svg/thumb-up.svg";
 import { getCookie } from "../../actions/auth";
