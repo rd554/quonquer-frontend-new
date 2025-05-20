@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {smartTrim} from '../../helpers/title'
-import renderHTML from "react-render-html";
+import parse from 'html-react-parser';
 
 
 const smallCard = ({ blog }) => {
@@ -30,7 +30,7 @@ const smallCard = ({ blog }) => {
           <section className="mx-2">
             <div>
               <Link href={`/blogs/${blog.slug}`}>
-                <a className="text-gray-700">{renderHTML(blog.excerpt)}</a>
+                <a className="text-gray-700">{parse(blog.excerpt)}</a>
               </Link>
             </div>
             <div>

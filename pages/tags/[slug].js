@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Card from "../../components/blog/Card";
 import moment from "moment";
-import renderHTML from "react-render-html";
+import parse from 'html-react-parser';
 import Layout from "../../components/Layout";
 import { singleTag } from "../../actions/tag";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";

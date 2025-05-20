@@ -1,5 +1,5 @@
 import Link from "next/link";
-import renderHTML from "react-render-html";
+import parse from 'html-react-parser';
 import { API } from "../../config";
 
 const Card = ({ blog }) => {
@@ -50,7 +50,7 @@ const Card = ({ blog }) => {
         <section className="mx-2">
           <div>
             <Link href={`/blogs/${blog.slug}`} legacyBehavior>
-              <a >{renderHTML(blog.excerpt)}</a>
+              <a >{parse(blog.excerpt)}</a>
             </Link>
           </div>
           <div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Router from "next/router";
-import GoogleLogin from "react-google-login";
+// import GoogleLogin from "react-google-login";
 import { loginWithGoogle, authenticate, isAuth } from "../../actions/auth";
 import { GOOGLE_CLIENT_ID } from "../../config";
 
@@ -28,11 +28,12 @@ const LoginGoogle = () => {
 
   return (
     <div className="text-center mt-12">
-      <GoogleLogin
+      {/* TODO: Implement Google login using @react-oauth/google */}
+      {/* <GoogleLogin
         clientId={`${GOOGLE_CLIENT_ID}`}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-      />
+      /> */}
     </div>
   );
 };

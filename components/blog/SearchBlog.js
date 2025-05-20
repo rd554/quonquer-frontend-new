@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import renderHTML from "react-render-html";
+import parse from 'html-react-parser';
 import { useState, useEffect } from "react";
 import { listSearch } from "../../actions/blog";
 import SearchButton from "../../public/svg/loupe.svg";

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SmallCard from "../../components/blog/SmallCard";
 import moment from "moment";
-import renderHTML from "react-render-html";
+import parse from 'html-react-parser';
 import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
 import { singleBlog, listRelated } from "../../actions/blog";
@@ -166,7 +166,7 @@ const SingleBlog = ({ blog, query }) => {
               </section>
               <div>
                 <section>
-                  <div className="text-gray-700">{renderHTML(blog.body)}</div>
+                  <div className="text-gray-700">{parse(blog.body)}</div>
                 </section>
               </div>
               <section className="flex justify-end flex-row mb-2 mr-2">
