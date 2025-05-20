@@ -1,3 +1,4 @@
+import React from "react";
 import QuestionComp from "../../../components/community/QuestionComp";
 import { withRouter } from "next/router";
 import { getSingleQuestion } from "../../../actions/community";

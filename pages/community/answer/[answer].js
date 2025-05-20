@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { withRouter } from "next/router";
@@ -39,7 +40,7 @@ const Answer = ({ answerObj, isForAnswerUpdate, answerId, questionId }) => {
         answerId={answerId}
         questionId={questionId}
         currentUserName={currentUserName}
-      currentUserPhoto={currentUserPhoto}
+        currentUserPhoto={currentUserPhoto}
       />
     </React.Fragment>
   );
