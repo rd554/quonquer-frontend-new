@@ -15,6 +15,16 @@ const Home = () => {
             playing={true}
             muted
             loop
+            playsinline
+            controls={false}
+          />
+          <video
+            src="/Walkcycle_1 MOV.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ display: 'none', width: '100%', height: 'auto' }}
           />
         </div>
         <div className="mt-8">
