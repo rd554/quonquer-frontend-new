@@ -22,7 +22,7 @@ const BottomBar = () => {
           <Link href="/" legacyBehavior>
             <a>
               <div className="">
-                <img src={Home} alt="Quonquer" />
+                <img src="/svg/home.svg" alt="Quonquer" />
               </div>
               <div className="-ml-1">
                 <p className="dark-blue-text font-light text-xs">Home</p>
@@ -34,7 +34,7 @@ const BottomBar = () => {
           <Link href="blogs/search" legacyBehavior>
             <a>
               <div className="ml-3">
-                <img src={search} alt="Quonquer Search" />
+                <img src="/svg/loupe.svg" alt="Quonquer Search" />
               </div>
               <div className="">
                 <p className="dark-blue-text font-light text-xs">Search</p>
@@ -46,7 +46,7 @@ const BottomBar = () => {
           <Link href="/menu" legacyBehavior>
             <a>
               <div className="pt-2">
-                <img src={Menu} alt="Quonquer Menu" />
+                <img src="/svg/up-chevron.svg" alt="Quonquer Menu" />
               </div>
             </a>
           </Link>
@@ -55,7 +55,7 @@ const BottomBar = () => {
           <Link href="/community" legacyBehavior>
             <a>
               <div className="">
-                <img src={Community} alt="Quonquer Community" />
+                <img src="/svg/help.svg" alt="Quonquer Community" />
               </div>
               <div className="-ml-4">
                 <p className="dark-blue-text font-light text-xs">Community</p>
@@ -64,16 +64,14 @@ const BottomBar = () => {
           </Link>
         </div>
         <div className="w-8 content-center cursor-pointer ml-auto mr-auto focus:outline-none focus:shadow-outline transition mt-1" onClick={handleProfileClick}>
-         
             <a>
               <div className="ml-2">
-                <img src={Profile} alt="Profile" />
+                <img src="/svg/user.svg" alt="Profile" />
               </div>
               <div className="ml-1">
                 <p className="dark-blue-text font-light text-xs">Profile</p>
               </div>
             </a>
-          
         </div>
       </section>
     </div>
