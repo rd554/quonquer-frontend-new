@@ -1,9 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import facebook from "../public/images/facebook.png";
-import instagram from "../public/images/instagram.png";
-import twitter from "../public/images/twitter.png";
-import linkedin from "../public/images/linkedin.png";
 
 const Menu = () => {
   return (
@@ -81,16 +77,16 @@ const Menu = () => {
       </div>
       <div className="flex mt-10 justify-center">
         <a href="https://www.instagram.com/quonquer.mentalhealth">
-          <img src="/images/instagram.png" className="w-10 h-10" alt="instagram" />
+          <img src="/images/instagram.png" className="w-10 h-10" alt="Instagram" />
         </a>
         <a href="https://www.facebook.com/Quonquer-878341932526317/">
-          <img src="/images/facebook.png" className="w-10 h-10 ml-3" alt="facebook" />
+          <img src="/images/facebook.png" className="w-10 h-10 ml-3" alt="Facebook" />
         </a>
         <a href="https://twitter.com/quonquer1">
-          <img src="/images/twitter.png" className="w-10 h-10 ml-3" alt="twitter" />
+          <img src="/images/twitter.png" className="w-10 h-10 ml-3" alt="Twitter" />
         </a>
         <a href="https://www.linkedin.com/company/quonquer1">
-          <img src="/images/linkedin.png" className="w-10 h-10 ml-3" alt="linkedin" />
+          <img src="/images/linkedin.png" className="w-10 h-10 ml-3" alt="LinkedIn" />
         </a>
       </div>
       <div className="flex justify-center">

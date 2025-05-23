@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../components/Layout";
-import f from "../public/f.png";
 import AboutPage from "../components/AboutPage";
 
 import WorkWithUs from "../components/WorkWithUs";
@@ -10,7 +9,7 @@ const About = () => {
     <Layout>
       <div>
         <div>
-          <img src={f} className="items-center mx-auto" alt="founder" />
+          <img src="/f.png" className="items-center mx-auto" alt="Logo" />
         </div>
         <div>
           <AboutPage />
