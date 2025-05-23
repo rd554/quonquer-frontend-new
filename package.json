@@ -6,9 +6,9 @@
     "build-css": "cross-env NODE_ENV=production tailwindcss -i ./app.css -o styles.css",
     "dev-css": "cross-env NODE_ENV=development tailwindcss -i ./app.css -o styles.css",
     "next-dev": "next dev",
-    "dev": "concurrently \"npm run next-dev\" \"npm run dev-css\"",
+    "dev": "next dev",
     "next-build": "next build",
-    "build": "npm run build-css && npm run next-build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
