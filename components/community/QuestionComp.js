@@ -5,7 +5,6 @@ import Private from "../auth/Private";
 import { useState } from "react";
 import { createQuestion } from "../../actions/community";
 import { getCookie } from "../../actions/auth";
-import user from "../../public/images/001-user.png";
 import { PUBLIC, ANONYMOUS } from "../../helpers/constants";
 
 const QuestionComp = ({ questionObj, isForUpdate, currentUserName, currentUserPhoto }) => {
@@ -101,7 +100,7 @@ text-xs font-semibold hover:bg-blue-900 focus:outline-none focus:shadow-outline 
 
           <div>
             <div className="flex text-bold items-center px-3 w-full pr-4 pl-4 my-4">
-              <img src={currentUserPhoto.length === 0 ? user : currentUserPhoto} alt="user" className="h-8 w-8" />
+              <img src={currentUserPhoto.length === 0 ? "/images/001-user.png" : currentUserPhoto} alt="user" className="h-8 w-8" />
               <p className="ml-3">{currentUserName.length ===  0 ? 'Hello user' : currentUserName }</p>
               <button className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"></button>
             </div>
